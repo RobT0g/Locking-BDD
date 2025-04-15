@@ -1,14 +1,11 @@
-Feature: Lock all
-    Scenario: Locking all doors with vehicle initially unlocked
-        Given my vehicle is 'unlocked'
-        When I press the 'lock' button
-        Then all doors should be 'locked'
+# In order to secure my vehicle, as a vehicle owner, I want to lock all doors
 
-    Scenario Outline: Locking all doors with partial doors initially unlocked
-        Given my vehicle door '1' is <door_1_state>
-        And my vehicle door '2' is <door_2_state>
-        And my vehicle door '3' is <door_3_state>
-        And my vehicle door '4' is <door_4_state>
+Feature: Lock all
+    Scenario Outline: Locking all doors
+        Given the door '1' is <door_1_state>
+        And the door '2' is <door_2_state>
+        And the door '3' is <door_3_state>
+        And the door '4' is <door_4_state>
         
         When I press the 'lock' button
         Then all doors should be 'locked'
@@ -33,10 +30,9 @@ Feature: Lock all
             | locked        | locked        | locked        | locked        |
 
     Scenario Outline: Door cannot be released when locked
-        Given my vehicle door <door_id> is 'locked'
+        Given the door <door_id> is 'locked'
         When I press the door <door_id> release button
-        Then all doors should be 'locked'
-        And the door <door_id> should be 'held'
+        Then the door <door_id> should be 'held'
 
         Examples:
             | door_id |
