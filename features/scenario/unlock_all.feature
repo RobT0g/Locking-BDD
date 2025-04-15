@@ -1,14 +1,14 @@
-# In order to secure my vehicle, as a vehicle owner, I want to lock all doors
+# In order to access my vehicle, as a vehicle owner, I want to unlock all doors
 
-Feature: Lock all
-    Scenario Outline: Locking all doors
+Feature: Unlock all
+    Scenario Outline: Unlocking all doors
         Given the door '1' is <door_1_state>
         And the door '2' is <door_2_state>
         And the door '3' is <door_3_state>
         And the door '4' is <door_4_state>
         
-        When I press the 'lock' button
-        Then all doors should be 'locked'
+        When I press the 'unlock' button
+        Then all doors should be 'unlocked'
 
         Examples:
             | door_1_state  | door_2_state  | door_3_state  | door_4_state  |
@@ -30,9 +30,9 @@ Feature: Lock all
             | locked        | locked        | locked        | locked        |
 
     Scenario Outline: Door cannot be released when locked
-        Given the door <door_id> is 'locked'
+        Given the door <door_id> is 'unlocked'
         When I press the door <door_id> release button
-        Then the door <door_id> should be 'held'
+        Then the door <door_id> should be 'released'
 
         Examples:
             | door_id |
