@@ -1,6 +1,9 @@
 # In order to access my vehicle, as a vehicle owner, I want to unlock all doors
 
 Feature: Unlock all
+    Background:
+        Given I do not have an authenticated key with me
+
     Scenario Outline: Unlocking all doors
         Given the door '1' is <door_1_state>
         And the door '2' is <door_2_state>

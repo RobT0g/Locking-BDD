@@ -1,6 +1,9 @@
 # In order to access my vehicle, as a vehicle owner, I want to unlock a single door by interacting with it while my key is with me 
 
 Feature: Unlock individual door
+    Background:
+        Given I do not have an authenticated key with me
+
     Scenario Outline: Unlocking a single door when I have the key
         Given the door <door_id> is 'locked'
         And I have an authenticated key with me

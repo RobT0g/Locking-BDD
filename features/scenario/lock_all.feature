@@ -1,6 +1,9 @@
 # In order to secure my vehicle, as a vehicle owner, I want to lock all doors
 
 Feature: Lock all
+    Background:
+        Given I do not have an authenticated key with me
+
     Scenario Outline: Locking all doors
         Given the door '1' is <door_1_state>
         And the door '2' is <door_2_state>
