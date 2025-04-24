@@ -20,6 +20,23 @@ Feature: Unlock individual door
             | 3       |
             | 4       |
 
+    # How can I test this?
+    Scenario Outline: Unlocking multiple single doors when I have the key
+        Given the door <door_id> is 'locked'
+        And I have an authenticated key with me
+        
+        When I press the door <door_id> release button
+        
+        Then the door <door_id> should be 'unlocked'
+        And the door <door_id> should be 'released'
+
+        Examples:
+            | door_id |
+            | 1       |
+            | 2       |
+            | 3       |
+            | 4       |
+
     Scenario Outline: Individual door is left unlocked
         Given the door <door_id> is 'locked'
         And I have an authenticated key with me
