@@ -33,7 +33,7 @@ Feature: Unlock all
     #         | locked        | locked        | locked        | unlocked      |
     #         | locked        | locked        | locked        | locked        |
 
-    Scenario Outline: Door cannot be released when locked
+    Scenario Outline: Door can be released when unlocked
         Given the door <door_id> is 'unlocked'
         When I 'hold' the door <door_id> release button
         Then the door <door_id> should be 'released'

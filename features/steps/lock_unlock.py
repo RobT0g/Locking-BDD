@@ -112,17 +112,15 @@ def step_then_the_door_should_be(context:any, door_id:str, state:str):
     if door_id < 1 or door_id > 4:
         raise ValueError('door_id must be between 1 and 4')
 
-    if state == 'locked':
-        assert int(context.model.read_from_model('current_door_state')) & 2**(door_id-1) == 2**(door_id-1), f'Failed to set the door {door_id} to {state}'
+    current_state = context.model.read_from_model('doors_release_state')
+    assert current_state >= 0 and current_state < 16, 'Failed to get the current_door_state'
+    print(f"current_state: {bin(current_state)}, checking if door {door_id} is {state}")
 
-    elif state == 'unlocked':
-        assert int(context.model.read_from_model('current_door_state')) & 2**(door_id-1) == 0, f'Failed to set the door {door_id} to {state}'
+    if state in ['locked', 'released']:
+        assert current_state & 2**(door_id-1) == 2**(door_id-1), f'Failed to set the door {door_id} to {state}'
 
-    elif state == 'held':
-        assert int(context.model.read_from_model('doors_release_state')) & 2**(door_id-1) == 2**(door_id-1), f'Failed to set the door {door_id} to {state}'
-
-    elif state == 'released':
-        assert int(context.model.read_from_model('doors_release_state')) & 2**(door_id-1) == 0, f'Failed to set the door {door_id} to {state}'
+    elif state in ['unlocked', 'held']:
+        assert current_state & 2**(door_id-1) == 0, f'Failed to set the door {door_id} to {state}'
 
     else:
         raise ValueError('state must be either locked, unlocked, held or released')
