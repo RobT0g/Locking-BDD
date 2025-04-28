@@ -1,8 +1,27 @@
 from behave import *
+from ..environment import ModelManager
+import time
 
 @given('the door {door_id} is {door_state}')
 def step_given_the_door_is_in_state(context:any, door_id:str, door_state:str):
-    pass
+    if door_id > 4:
+        raise ValueError('door_id must be between 1 and 4')
+
+    current_state = context.model.read_from_model('current_door_state')
+    assert current_state, 'Failed to get the current_door_state'
+
+    if door_state == 'locked':
+        current_state |= 2**(door_id-1)
+    
+    elif door_state == 'unlocked':
+        current_state &= ~(2**(door_id-1))
+
+    else:
+        raise ValueError('door_state must be either locked or unlocked')
+
+    context.model.write_to_model(f'general_locking_manager/door_lock_state_memory', door_state)
+
+    assert context.model.read_from_model('current_door_state') == current_state, f'Failed to set the door {door_id} to {door_state}'
 
 @given('I have an authenticated key with me')
 def step_given_i_have_an_authenticated_key_with_me(context:any):
