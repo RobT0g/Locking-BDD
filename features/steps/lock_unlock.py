@@ -1,5 +1,5 @@
 from behave import *
-from ..environment import ModelManager
+from environment.environment import ModelManager
 import time
 
 @given('the door {door_id} is {door_state}')
