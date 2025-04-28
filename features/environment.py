@@ -57,7 +57,7 @@ def before_all(context):
     """
 
     model_name = "main.slx"
-    print(model_name)
+    print(f'> Testing model: {model_name}')
 
     context.model = ModelManager(model_name)
     context.model.start_model()
@@ -75,7 +75,6 @@ def after_scenario(context, scenario):
     '''
 
     print(f"Scenario finished: {scenario.name}")
-
 
 def after_all(context):
     '''

@@ -192,3 +192,5 @@ codegen/
 octave-workspace
 
 resources
+reports
+pretty.output

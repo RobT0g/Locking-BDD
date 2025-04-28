@@ -1,10 +1,13 @@
 from behave import *
-from environment.environment import ModelManager
+from features.environment import ModelManager
 import time
 
 @given('the door {door_id} is {door_state}')
 def step_given_the_door_is_in_state(context:any, door_id:str, door_state:str):
-    if door_id > 4:
+    door_id = int(door_id.replace("'", "").replace('"', ''))
+    door_state = door_state.replace("'", "").replace('"', '')
+
+    if door_id < 1 or door_id > 4:
         raise ValueError('door_id must be between 1 and 4')
 
     current_state = context.model.read_from_model('current_door_state')
