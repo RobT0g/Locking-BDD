@@ -9,7 +9,7 @@ Feature: Unlock individual door
         Given the door <door_id> is 'locked'
         And I have an authenticated key with me
 
-        When I press the door <door_id> release button
+        When I 'hold' the door <door_id> release button
 
         Then the door <door_id> should be 'unlocked'
         And the door <door_id> should be 'released'
@@ -26,7 +26,7 @@ Feature: Unlock individual door
         Given the door <door_id> is 'locked'
         And I have an authenticated key with me
 
-        When I press the door <door_id> release button
+        When I 'hold' the door <door_id> release button
 
         Then the door <door_id> should be 'unlocked'
         And the door <door_id> should be 'released'
@@ -44,7 +44,7 @@ Feature: Unlock individual door
 
         When I press the door <door_id> unlock button
         And I wait '1' seconds
-        And I release the door <door_id> release button
+        And I 'release' the door <door_id> release button
 
         Then the door <door_id> should be 'unlocked'
         And the door <door_id> should be 'held'

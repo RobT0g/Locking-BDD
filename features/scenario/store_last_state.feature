@@ -87,9 +87,9 @@ Feature: Storing last lock state
         Given the door <door_id> is 'locked'
         And I have an authenticated key with me
 
-        When I press the door <door_id> release button
+        When I 'hold' the door <door_id> release button
         And I wait '1' seconds
-        And I release the door <door_id> release button
+        And I 'release' the door <door_id> release button
         And I turn off the vehicle
         And I turn on the vehicle
 

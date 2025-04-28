@@ -76,7 +76,7 @@ Feature: Auto relocking
 
         When I press the 'unlock' button
         And all doors get 'unlocked'
-        And I press the door <door_id> release button
+        And I 'hold' the door <door_id> release button
         And I wait <wait_time> seconds
 
         Then all doors should be 'unlocked'
