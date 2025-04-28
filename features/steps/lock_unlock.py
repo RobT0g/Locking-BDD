@@ -9,6 +9,8 @@ def step_given_all_door_are_in_state(context:any, state:str):
     for i in range(4):
         context.model.write_to_model(f'door_release_{i+1}', 0)
 
+    assert int(context.model.read_from_model(f'doors_release_state')) == 0, f'Failed to set all doors release buttons to 0'
+
     if state == 'locked':
         context.model.write_to_model(f'general_locking_manager/set_state_value', 15)
 
