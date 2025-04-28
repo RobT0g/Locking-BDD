@@ -1,6 +1,9 @@
 # In order to avoid leaving my vehicle unsecured, as a vehicle owner, I want all doors to relock if accidently unlock the vehicle
 
 Feature: Auto relocking
+    Background:
+        Given I do not have an authenticated key with me
+
     Scenario Outline: Auto relocking
         Given the door '1' is <door_1_state>
         And the door '2' is <door_2_state>

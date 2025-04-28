@@ -1,6 +1,9 @@
 # In order to ensure my vehicle will not change lock state, as a vehicle owner, I want my vehicle to store the last lock state before turning off
 
 Feature: Storing last lock state
+    Background:
+        Given I do not have an authenticated key with me
+
     Scenario Outline: Saving last state
         Given the door '1' is <door_1_state>
         And the door '2' is <door_2_state>
