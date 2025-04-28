@@ -112,7 +112,13 @@ def step_then_the_door_should_be(context:any, door_id:str, state:str):
     if door_id < 1 or door_id > 4:
         raise ValueError('door_id must be between 1 and 4')
 
-    current_state = context.model.read_from_model('doors_release_state')
+    current_state = None
+    if state in ['locked', 'unlocked']:
+        current_state = context.model.read_from_model('current_door_state')
+
+    elif state in ['held', 'released']:
+        current_state = context.model.read_from_model('doors_release_state')
+
     assert current_state >= 0 and current_state < 16, 'Failed to get the current_door_state'
     print(f"current_state: {bin(current_state)}, checking if door {door_id} is {state}")
 
