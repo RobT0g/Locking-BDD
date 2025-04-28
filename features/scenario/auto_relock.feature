@@ -3,19 +3,20 @@
 Feature: Auto relocking
     Background:
         Given I do not have an authenticated key with me
+        And my vehicle 'locked' with no release buttons pressed
 
     Scenario Outline: Auto relocking
         Given the door '1' is <door_1_state>
         And the door '2' is <door_2_state>
         And the door '3' is <door_3_state>
         And the door '4' is <door_4_state>
-        
+
         When I press the 'unlock' button
         And all doors get 'unlocked'
         And I wait <wait_time> seconds
 
         Then all doors should be <expected_state>
-                
+
         Examples:
             | door_1_state  | door_2_state  | door_3_state  | door_4_state  | wait_time | expected_state |
             | unlocked      | unlocked      | unlocked      | unlocked      | 10        | unlocked       |
@@ -72,10 +73,10 @@ Feature: Auto relocking
         And the door '2' is <door_2_state>
         And the door '3' is <door_3_state>
         And the door '4' is <door_4_state>
-        
+
         When I press the 'unlock' button
         And all doors get 'unlocked'
-        And I press the door <door_id> release button
+        And I 'hold' the door <door_id> release button
         And I wait <wait_time> seconds
 
         Then all doors should be 'unlocked'

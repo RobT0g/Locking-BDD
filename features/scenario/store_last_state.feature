@@ -3,6 +3,7 @@
 Feature: Storing last lock state
     Background:
         Given I do not have an authenticated key with me
+        And my vehicle 'locked' with no release buttons pressed
 
     Scenario Outline: Saving last state
         Given the door '1' is <door_1_state>
@@ -85,13 +86,13 @@ Feature: Storing last lock state
     Scenario Outline: Saving the last state immediately after unlocking individual doors
         Given the door <door_id> is 'locked'
         And I have an authenticated key with me
-        
-        When I press the door <door_id> release button
+
+        When I 'hold' the door <door_id> release button
         And I wait '1' seconds
-        And I release the door <door_id> release button
+        And I 'release' the door <door_id> release button
         And I turn off the vehicle
         And I turn on the vehicle
-        
+
         Then the door <door_id> should be 'unlocked'
 
         Examples:
@@ -106,7 +107,7 @@ Feature: Storing last lock state
         And the door '2' is <door_2_state>
         And the door '3' is <door_3_state>
         And the door '4' is <door_4_state>
-        
+
         When I press the 'unlock' button
         And all doors get 'unlocked'
         And I wait <wait_time> seconds

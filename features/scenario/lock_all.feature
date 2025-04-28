@@ -35,7 +35,7 @@ Feature: Lock all
 
     Scenario Outline: Door cannot be released when locked
         Given the door <door_id> is 'locked'
-        When I 'press' the door <door_id> release button
+        When I 'hold' the door <door_id> release button
         Then the door <door_id> should be 'held'
 
         Examples:
