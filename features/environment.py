@@ -35,7 +35,7 @@ class ModelManager:
         '''
 
         print(f"Sending {self.model_name}/{var_name} to model with value {payload} and type {type(payload)}")
-        self.eng.set_real_time_data(var_name, str(payload), 'Value', nargout=0)
+        self.eng.write_to_model(var_name, str(payload), 'Value', nargout=0)
 
     def read_from_model(self, var_name:str) -> str:
         '''
@@ -46,7 +46,7 @@ class ModelManager:
             str: The value of the variable in the model.
         '''
 
-        value = self.eng.get_real_time_data(var_name, nargout=1)
+        value = self.eng.read_from_model(var_name, nargout=1)
         print(f"Getting {self.model_name}/{var_name} from model with value {value} and type {type(value)}")
         return value
 
