@@ -25,7 +25,7 @@ class ModelManager:
         '''
 
         self.eng.set_param(self.model_name, "SimulationCommand", "stop", nargout=0)
-    
+
     def write_to_model(self, var_name:str, payload:str|int|float):
         '''
         Sends data to the Simulink model.
@@ -33,7 +33,7 @@ class ModelManager:
             var_name (str): The name of the variable in the model.
             payload (str|int|float): The value to send to the model.
         '''
-        
+
         print(f"Sending {self.model_name}/{var_name} to model with value {payload} and type {type(payload)}")
         self.eng.set_real_time_data(var_name, str(payload), 'Value', nargout=0)
 
@@ -55,10 +55,10 @@ def before_all(context):
     """
     Initializes the simulation environment before all tests.
     """
-    
+
     model_name = "main.slx"
     print(model_name)
-    
+
     context.model = ModelManager(model_name)
     context.model.start_model()
 
@@ -75,7 +75,7 @@ def after_scenario(context, scenario):
     '''
 
     print(f"Scenario finished: {scenario.name}")
-    
+
 
 def after_all(context):
     '''
@@ -83,7 +83,11 @@ def after_all(context):
     '''
 
     print("All tests done!!!")
-    
+
     context.model.stop_model()
     time.sleep(2*latency)
     context.model.quit()
+
+if __name__ == '__main__':
+    pass
+    #before_all()
