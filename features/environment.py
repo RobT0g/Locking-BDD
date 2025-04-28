@@ -60,7 +60,7 @@ def before_all(context):
     print(f'> Testing model: {model_name}')
 
     context.model = ModelManager(model_name)
-    context.model.start_model()
+    context.model.init_model()
 
 def before_scenario(context, scenario):
     '''
@@ -83,9 +83,7 @@ def after_all(context):
 
     print("All tests done!!!")
 
-    context.model.stop_model()
-    time.sleep(2*latency)
-    context.model.quit()
+    context.model.deinit_model()
 
 if __name__ == '__main__':
     pass
