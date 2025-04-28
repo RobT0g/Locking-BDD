@@ -3,16 +3,16 @@ from features.environment import ModelManager
 import time
 
 @given("all doors are {state}")
-def step_give_all_door_are_in_state(context:any, state:str):
+def step_given_all_door_are_in_state(context:any, state:str):
     state = state.replace("'", "").replace('"', '')
     if state == 'locked':
         context.model.write_to_model('lock_all_button', 1)
-        time.sleep(0.5)
+        time.sleep(0.2)
         context.model.write_to_model('lock_all_button', 0)
 
     elif state == 'unlocked':
         context.model.write_to_model('unlock_all_button', 1)
-        time.sleep(0.5)
+        time.sleep(0.2)
         context.model.write_to_model('unlock_all_button', 0)
 
     else:
@@ -29,7 +29,7 @@ def step_given_the_door_is_in_state(context:any, door_id:str, door_state:str):
         raise ValueError('door_id must be between 1 and 4')
 
     current_state = context.model.read_from_model('current_door_state')
-    assert current_state in [0, 1], 'Failed to get the current_door_state'
+    assert current_state >= 0 and current_state < 16, 'Failed to get the current_door_state'
 
     if door_state == 'locked':
         current_state |= 2**(door_id-1)
@@ -40,9 +40,14 @@ def step_given_the_door_is_in_state(context:any, door_id:str, door_state:str):
     else:
         raise ValueError('door_state must be either locked or unlocked')
 
-    context.model.write_to_model(f'general_locking_manager/door_lock_state_memory', door_state)
+    context.model.write_to_model(f'general_locking_manager/set_state_value', current_state)
+    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 0)
+    time.sleep(0.2)
+    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 1)
+    time.sleep(0.2)
+    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 0)
 
-    assert context.model.read_from_model('current_door_state') == current_state, f'Failed to set the door {door_id} to {door_state}'
+    assert int(context.model.read_from_model('current_door_state')) == current_state, f'Failed to set the door {door_id} to {door_state}'
 
 @given('I {key_present} an authenticated key with me')
 def step_given_i_have_an_authenticated_key_with_me(context:any, key_present:str):
@@ -50,7 +55,7 @@ def step_given_i_have_an_authenticated_key_with_me(context:any, key_present:str)
 
 @when('I press the {operation} button')
 def step_when_i_press_the_operation_button(context:any, operation:str):
-    pass
+    step_given_all_door_are_in_state(context, operation+'ed')
 
 @when('I {button_state} the door {door_id} release button')
 def step_when_i_press_the_door_release_button(context:any, button_state:str, door_id:str):
@@ -70,7 +75,16 @@ def step_when_i_turn_the_vehicle(context:any, vehicle_state:str):
 
 @then('all doors should be {state}')
 def step_then_all_doors_should_be(context:any, state:str):
-    pass
+    state = state.replace("'", "").replace('"', '')
+
+    if state == 'locked':
+        assert int(context.model.read_from_model('current_door_state')) == 15, f'Failed to set all doors to {state}'
+
+    elif state == 'unlocked':
+        assert int(context.model.read_from_model('current_door_state')) == 0, f'Failed to set all doors to {state}'
+
+    else:
+        raise ValueError('state must be either locked or unlocked')
 
 @then('the door {door_id} should be {state}')
 def step_then_the_door_should_be(context:any, door_id:str, state:str):
