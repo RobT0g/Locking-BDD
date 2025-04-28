@@ -3,7 +3,7 @@
 Feature: Lock all
     Background:
         Given I do not have an authenticated key with me
-        #And all doors are 'locked'
+        And my vehicle 'locked' with no release buttons pressed
 
     Scenario Outline: Locking all doors
         Given the door '1' is <door_1_state>
@@ -33,14 +33,14 @@ Feature: Lock all
             | locked        | locked        | locked        | unlocked      |
             | locked        | locked        | locked        | locked        |
 
-    # Scenario Outline: Door cannot be released when locked
-    #     Given the door <door_id> is 'locked'
-    #     When I press the door <door_id> release button
-    #     Then the door <door_id> should be 'held'
+    Scenario Outline: Door cannot be released when locked
+        Given the door <door_id> is 'locked'
+        When I 'press' the door <door_id> release button
+        Then the door <door_id> should be 'held'
 
-    #     Examples:
-    #         | door_id |
-    #         | 1       |
-    #         | 2       |
-    #         | 3       |
-    #         | 4       |
+        Examples:
+            | door_id |
+            | 1       |
+            | 2       |
+            | 3       |
+            | 4       |

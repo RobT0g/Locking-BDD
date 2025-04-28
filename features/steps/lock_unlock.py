@@ -2,21 +2,27 @@ from behave import *
 from features.environment import ModelManager
 import time
 
-@given("all doors are {state}")
+@given("my vehicle {state} with no release buttons pressed")
 def step_given_all_door_are_in_state(context:any, state:str):
     state = state.replace("'", "").replace('"', '')
+
+    for i in range(4):
+        context.model.write_to_model(f'door_release_{i+1}', 0)
+
     if state == 'locked':
-        context.model.write_to_model('lock_all_button', 1)
-        time.sleep(0.2)
-        context.model.write_to_model('lock_all_button', 0)
+        context.model.write_to_model(f'general_locking_manager/set_state_value', 15)
 
     elif state == 'unlocked':
-        context.model.write_to_model('unlock_all_button', 1)
-        time.sleep(0.2)
-        context.model.write_to_model('unlock_all_button', 0)
+        context.model.write_to_model(f'general_locking_manager/set_state_value', 0)
 
     else:
         raise ValueError('state must be either locked or unlocked')
+
+    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 0)
+    time.sleep(0.2)
+    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 1)
+    time.sleep(0.2)
+    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 0)
 
     assert int(context.model.read_from_model('current_door_state')) == (15 if state == 'locked' else 0), f'Failed to set all doors to {state}'
 
@@ -59,7 +65,17 @@ def step_when_i_press_the_operation_button(context:any, operation:str):
 
 @when('I {button_state} the door {door_id} release button')
 def step_when_i_press_the_door_release_button(context:any, button_state:str, door_id:str):
-    pass
+    button_state = button_state.replace("'", "").replace('"', '')
+    door_id = int(door_id.replace("'", "").replace('"', ''))
+
+    if button_state == 'press':
+        context.model.write_to_model(f'door_release_{door_id}', 1)
+
+    elif button_state == 'release':
+        context.model.write_to_model(f'door_release_{door_id}', 0)
+
+    else:
+        raise ValueError('button_state must be either press or release')
 
 @when('all doors get {state}')
 def step_when_all_doors_get_state(context:any, state:str):
@@ -88,5 +104,23 @@ def step_then_all_doors_should_be(context:any, state:str):
 
 @then('the door {door_id} should be {state}')
 def step_then_the_door_should_be(context:any, door_id:str, state:str):
-    pass
+    door_id = int(door_id.replace("'", "").replace('"', ''))
+    state = state.replace("'", "").replace('"', '')
 
+    if door_id < 1 or door_id > 4:
+        raise ValueError('door_id must be between 1 and 4')
+
+    if state == 'locked':
+        assert int(context.model.read_from_model('current_door_state')) & 2**(door_id-1) == 2**(door_id-1), f'Failed to set the door {door_id} to {state}'
+
+    elif state == 'unlocked':
+        assert int(context.model.read_from_model('current_door_state')) & 2**(door_id-1) == 0, f'Failed to set the door {door_id} to {state}'
+
+    elif state == 'held':
+        assert int(context.model.read_from_model('doors_release_state')) & 2**(door_id-1) == 2**(door_id-1), f'Failed to set the door {door_id} to {state}'
+
+    elif state == 'released':
+        assert int(context.model.read_from_model('doors_release_state')) & 2**(door_id-1) == 0, f'Failed to set the door {door_id} to {state}'
+
+    else:
+        raise ValueError('state must be either locked, unlocked, held or released')
