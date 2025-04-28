@@ -12,7 +12,7 @@ def step_given_the_door_is_in_state(context:any, door_id:str, door_state:str):
 
     if door_state == 'locked':
         current_state |= 2**(door_id-1)
-    
+
     elif door_state == 'unlocked':
         current_state &= ~(2**(door_id-1))
 
@@ -23,8 +23,8 @@ def step_given_the_door_is_in_state(context:any, door_id:str, door_state:str):
 
     assert context.model.read_from_model('current_door_state') == current_state, f'Failed to set the door {door_id} to {door_state}'
 
-@given('I have an authenticated key with me')
-def step_given_i_have_an_authenticated_key_with_me(context:any):
+@given('I {key_present} an authenticated key with me')
+def step_given_i_have_an_authenticated_key_with_me(context:any, key_present:str):
     pass
 
 @when('I press the {operation} button')
