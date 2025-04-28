@@ -2,6 +2,24 @@ from behave import *
 from features.environment import ModelManager
 import time
 
+@given("all doors are {state}")
+def step_give_all_door_are_in_state(context:any, state:str):
+    state = state.replace("'", "").replace('"', '')
+    if state == 'locked':
+        context.model.write_to_model('lock_all_button', 1)
+        time.sleep(0.5)
+        context.model.write_to_model('lock_all_button', 0)
+
+    elif state == 'unlocked':
+        context.model.write_to_model('unlock_all_button', 1)
+        time.sleep(0.5)
+        context.model.write_to_model('unlock_all_button', 0)
+
+    else:
+        raise ValueError('state must be either locked or unlocked')
+
+    assert int(context.model.read_from_model('current_door_state')) == (15 if state == 'locked' else 0), f'Failed to set all doors to {state}'
+
 @given('the door {door_id} is {door_state}')
 def step_given_the_door_is_in_state(context:any, door_id:str, door_state:str):
     door_id = int(door_id.replace("'", "").replace('"', ''))
@@ -11,7 +29,7 @@ def step_given_the_door_is_in_state(context:any, door_id:str, door_state:str):
         raise ValueError('door_id must be between 1 and 4')
 
     current_state = context.model.read_from_model('current_door_state')
-    assert current_state, 'Failed to get the current_door_state'
+    assert current_state in [0, 1], 'Failed to get the current_door_state'
 
     if door_state == 'locked':
         current_state |= 2**(door_id-1)

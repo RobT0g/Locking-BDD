@@ -26,16 +26,16 @@ class ModelManager:
 
         self.eng.set_param(self.model_name, "SimulationCommand", "stop", nargout=0)
 
-    def write_to_model(self, var_name:str, payload:str|int|float):
+    def write_to_model(self, var_name:str, payload:int):
         '''
         Sends data to the Simulink model.
         Args:
             var_name (str): The name of the variable in the model.
-            payload (str|int|float): The value to send to the model.
+            payload (int): The value to send to the model.
         '''
 
         print(f"Sending {self.model_name}/{var_name} to model with value {payload} and type {type(payload)}")
-        self.eng.write_to_model(var_name, str(payload), 'Value', nargout=0)
+        self.eng.write_to_model(var_name, payload, 'Value', nargout=0)
 
     def read_from_model(self, var_name:str) -> str:
         '''
