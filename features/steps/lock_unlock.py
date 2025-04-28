@@ -70,7 +70,7 @@ def step_when_i_press_the_door_release_button(context:any, button_state:str, doo
     button_state = button_state.replace("'", "").replace('"', '')
     door_id = int(door_id.replace("'", "").replace('"', ''))
 
-    if button_state == 'press':
+    if button_state == 'hold':
         context.model.write_to_model(f'door_release_{door_id}', 1)
 
     elif button_state == 'release':
