@@ -16,4 +16,4 @@ Locking system using BDD
 - Activate the environment with the command `.venv\Scripts\activate`
 - Install all dependencies with the command `pip install -r reqs.txt`
 
-To work with the simulink model you need to have Matlab (2023b or newer) installed. There's no special setup there as everything is set in the project.
+To work with the simulink model you need to have Matlab (2024a or newer) installed. There's no special setup there as everything is set in the project.

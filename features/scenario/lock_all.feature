@@ -17,30 +17,30 @@ Feature: Lock all
         Examples:
             | door_1_state  | door_2_state  | door_3_state  | door_4_state  |
             | unlocked      | unlocked      | unlocked      | unlocked      |
-    #         | unlocked      | unlocked      | unlocked      | locked        |
-    #         | unlocked      | unlocked      | locked        | unlocked      |
-    #         | unlocked      | unlocked      | locked        | locked        |
-    #         | unlocked      | locked        | unlocked      | unlocked      |
-    #         | unlocked      | locked        | unlocked      | locked        |
-    #         | unlocked      | locked        | locked        | unlocked      |
-    #         | unlocked      | locked        | locked        | locked        |
-    #         | locked        | unlocked      | unlocked      | unlocked      |
-    #         | locked        | unlocked      | unlocked      | locked        |
-    #         | locked        | unlocked      | locked        | unlocked      |
-    #         | locked        | unlocked      | locked        | locked        |
-    #         | locked        | locked        | unlocked      | unlocked      |
-    #         | locked        | locked        | unlocked      | locked        |
-    #         | locked        | locked        | locked        | unlocked      |
-    #         | locked        | locked        | locked        | locked        |
+            | unlocked      | unlocked      | unlocked      | locked        |
+            | unlocked      | unlocked      | locked        | unlocked      |
+            | unlocked      | unlocked      | locked        | locked        |
+            | unlocked      | locked        | unlocked      | unlocked      |
+            | unlocked      | locked        | unlocked      | locked        |
+            | unlocked      | locked        | locked        | unlocked      |
+            | unlocked      | locked        | locked        | locked        |
+            | locked        | unlocked      | unlocked      | unlocked      |
+            | locked        | unlocked      | unlocked      | locked        |
+            | locked        | unlocked      | locked        | unlocked      |
+            | locked        | unlocked      | locked        | locked        |
+            | locked        | locked        | unlocked      | unlocked      |
+            | locked        | locked        | unlocked      | locked        |
+            | locked        | locked        | locked        | unlocked      |
+            | locked        | locked        | locked        | locked        |
 
-    # Scenario Outline: Door cannot be released when locked
-    #     Given the door <door_id> is 'locked'
-    #     When I 'hold' the door <door_id> release button
-    #     Then the door <door_id> should be 'held'
+    Scenario Outline: Door cannot be released when locked
+        Given the door <door_id> is 'locked'
+        When I 'hold' the door <door_id> release button
+        Then the door <door_id> should be 'held'
 
-    #     Examples:
-    #         | door_id |
-    #         | 1       |
-    #         | 2       |
-    #         | 3       |
-    #         | 4       |
+        Examples:
+            | door_id |
+            | 1       |
+            | 2       |
+            | 3       |
+            | 4       |

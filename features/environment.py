@@ -36,9 +36,11 @@ class ModelManager:
 
         if model_name is None:
             model_name = self.model_name
+        
+        # else: model_name = self.eng.eval('base', model_name)
 
         print(f"Sending {model_name}/{var_name} to model with value {payload} and type {type(payload)}")
-        self.eng.write_to_model(var_name, payload, 'Value', nargout=0)
+        self.eng.write_to_model(f'{model_name}/{var_name}', payload, 'Value', nargout=0)
 
     def read_from_model(self, var_name:str, model_name:str=None) -> str:
         '''
@@ -51,8 +53,10 @@ class ModelManager:
 
         if model_name is None:
             model_name = self.model_name
+        
+        # else: model_name = self.eng.eval('base', model_name)
 
-        value = self.eng.read_from_model(var_name, nargout=1)
+        value = self.eng.read_from_model(f'{model_name}/{var_name}', nargout=1)
         print(f"Getting {model_name}/{var_name} from model with value {value} and type {type(value)}")
         return value
 
