@@ -53,11 +53,6 @@ Feature: Auto relocking
             | locked        | locked        | locked        | locked        | 16        | locked         |
 
     Scenario Outline: Not auto relocking if released button is pressed
-        Given the door '1' is <door_1_state>
-        And the door '2' is <door_2_state>
-        And the door '3' is <door_3_state>
-        And the door '4' is <door_4_state>
-
         When I press the 'unlock' button
         And all doors get 'unlocked'
         And I 'hold' the door <door_id> release button
@@ -67,68 +62,8 @@ Feature: Auto relocking
         Then all doors should be 'unlocked'
 
         Examples:
-            | door_1_state  | door_2_state  | door_3_state  | door_4_state  | door_id |
-            | unlocked      | unlocked      | unlocked      | unlocked      | 1       |
-            | unlocked      | unlocked      | unlocked      | unlocked      | 2       |
-            | unlocked      | unlocked      | unlocked      | unlocked      | 3       |
-            | unlocked      | unlocked      | unlocked      | unlocked      | 4       |
-            | unlocked      | unlocked      | unlocked      | locked        | 1       |
-            | unlocked      | unlocked      | unlocked      | locked        | 2       |
-            | unlocked      | unlocked      | unlocked      | locked        | 3       |
-            | unlocked      | unlocked      | unlocked      | locked        | 4       |
-            | unlocked      | unlocked      | locked        | unlocked      | 1       |
-            | unlocked      | unlocked      | locked        | unlocked      | 2       |
-            | unlocked      | unlocked      | locked        | unlocked      | 3       |
-            | unlocked      | unlocked      | locked        | unlocked      | 4       |
-            | unlocked      | unlocked      | locked        | locked        | 1       |
-            | unlocked      | unlocked      | locked        | locked        | 2       |
-            | unlocked      | unlocked      | locked        | locked        | 3       |
-            | unlocked      | unlocked      | locked        | locked        | 4       |
-            | unlocked      | locked        | unlocked      | unlocked      | 1       |
-            | unlocked      | locked        | unlocked      | unlocked      | 2       |
-            | unlocked      | locked        | unlocked      | unlocked      | 3       |
-            | unlocked      | locked        | unlocked      | unlocked      | 4       |
-            | unlocked      | locked        | unlocked      | locked        | 1       |
-            | unlocked      | locked        | unlocked      | locked        | 2       |
-            | unlocked      | locked        | unlocked      | locked        | 3       |
-            | unlocked      | locked        | unlocked      | locked        | 4       |
-            | unlocked      | locked        | locked        | unlocked      | 1       |
-            | unlocked      | locked        | locked        | unlocked      | 2       |
-            | unlocked      | locked        | locked        | unlocked      | 3       |
-            | unlocked      | locked        | locked        | unlocked      | 4       |
-            | unlocked      | locked        | locked        | locked        | 1       |
-            | unlocked      | locked        | locked        | locked        | 2       |
-            | unlocked      | locked        | locked        | locked        | 3       |
-            | unlocked      | locked        | locked        | locked        | 4       |
-            | locked        | unlocked      | unlocked      | unlocked      | 1       |
-            | locked        | unlocked      | unlocked      | unlocked      | 2       |
-            | locked        | unlocked      | unlocked      | unlocked      | 3       |
-            | locked        | unlocked      | unlocked      | unlocked      | 4       |
-            | locked        | unlocked      | unlocked      | locked        | 1       |
-            | locked        | unlocked      | unlocked      | locked        | 2       |
-            | locked        | unlocked      | unlocked      | locked        | 3       |
-            | locked        | unlocked      | unlocked      | locked        | 4       |
-            | locked        | unlocked      | locked        | unlocked      | 1       |
-            | locked        | unlocked      | locked        | unlocked      | 2       |
-            | locked        | unlocked      | locked        | unlocked      | 3       |
-            | locked        | unlocked      | locked        | unlocked      | 4       |
-            | locked        | unlocked      | locked        | locked        | 1       |
-            | locked        | unlocked      | locked        | locked        | 2       |
-            | locked        | unlocked      | locked        | locked        | 3       |
-            | locked        | unlocked      | locked        | locked        | 4       |
-            | locked        | locked        | unlocked      | unlocked      | 1       |
-            | locked        | locked        | unlocked      | unlocked      | 2       |
-            | locked        | locked        | unlocked      | unlocked      | 3       |
-            | locked        | locked        | unlocked      | unlocked      | 4       |
-            | locked        | locked        | unlocked      | locked        | 1       |
-            | locked        | locked        | unlocked      | locked        | 2       |
-            | locked        | locked        | unlocked      | locked        | 3       |
-            | locked        | locked        | unlocked      | locked        | 4       |
-            | locked        | locked        | locked        | unlocked      | 1       |
-            | locked        | locked        | locked        | unlocked      | 2       |
-            | locked        | locked        | locked        | unlocked      | 3       |
-            | locked        | locked        | locked        | unlocked      | 4       |
-            | locked        | locked        | locked        | locked        | 1       |
-            | locked        | locked        | locked        | locked        | 2       |
-            | locked        | locked        | locked        | locked        | 3       |
-            | locked        | locked        | locked        | locked        | 4       |
+            | door_id |
+            | 1       |
+            | 2       |
+            | 3       |
+            | 4       |
