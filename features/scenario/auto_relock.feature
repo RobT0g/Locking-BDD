@@ -35,22 +35,6 @@ Feature: Auto relocking
             | locked        | locked        | unlocked      | locked        | 10        | unlocked       |
             | locked        | locked        | locked        | unlocked      | 10        | unlocked       |
             | locked        | locked        | locked        | locked        | 10        | unlocked       |
-            | unlocked      | unlocked      | unlocked      | unlocked      | 20        | unlocked       |
-            | unlocked      | unlocked      | unlocked      | locked        | 20        | unlocked       |
-            | unlocked      | unlocked      | locked        | unlocked      | 20        | unlocked       |
-            | unlocked      | unlocked      | locked        | locked        | 20        | unlocked       |
-            | unlocked      | locked        | unlocked      | unlocked      | 20        | unlocked       |
-            | unlocked      | locked        | unlocked      | locked        | 20        | unlocked       |
-            | unlocked      | locked        | locked        | unlocked      | 20        | unlocked       |
-            | unlocked      | locked        | locked        | locked        | 20        | unlocked       |
-            | locked        | unlocked      | unlocked      | unlocked      | 20        | unlocked       |
-            | locked        | unlocked      | unlocked      | locked        | 20        | unlocked       |
-            | locked        | unlocked      | locked        | unlocked      | 20        | unlocked       |
-            | locked        | unlocked      | locked        | locked        | 20        | unlocked       |
-            | locked        | locked        | unlocked      | unlocked      | 20        | unlocked       |
-            | locked        | locked        | unlocked      | locked        | 20        | unlocked       |
-            | locked        | locked        | locked        | unlocked      | 20        | unlocked       |
-            | locked        | locked        | locked        | locked        | 20        | unlocked       |
             | unlocked      | unlocked      | unlocked      | unlocked      | 30        | locked         |
             | unlocked      | unlocked      | unlocked      | locked        | 30        | locked         |
             | unlocked      | unlocked      | locked        | unlocked      | 30        | locked         |

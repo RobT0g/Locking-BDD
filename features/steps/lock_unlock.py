@@ -12,19 +12,19 @@ def step_given_all_door_are_in_state(context:any, state:str):
     assert int(context.model.read_from_model(f'doors_release_state')) == 0, f'Failed to set all doors release buttons to 0'
 
     if state == 'locked':
-        context.model.write_to_model(f'general_locking_manager/set_state_value', 15)
+        context.model.write_to_model(f'general_locking_manager/set_state_value', 15, 'main')
 
     elif state == 'unlocked':
-        context.model.write_to_model(f'general_locking_manager/set_state_value', 0)
+        context.model.write_to_model(f'general_locking_manager/set_state_value', 0, 'main')
 
     else:
         raise ValueError('state must be either locked or unlocked')
 
-    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 0)
+    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 0, 'main')
     time.sleep(0.2)
-    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 1)
+    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 1, 'main')
     time.sleep(0.2)
-    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 0)
+    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 0, 'main')
 
     assert int(context.model.read_from_model('current_door_state')) == (15 if state == 'locked' else 0), f'Failed to set all doors to {state}'
 
@@ -48,12 +48,12 @@ def step_given_the_door_is_in_state(context:any, door_id:str, door_state:str):
     else:
         raise ValueError('door_state must be either locked or unlocked')
 
-    context.model.write_to_model(f'general_locking_manager/set_state_value', current_state)
-    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 0)
+    context.model.write_to_model(f'general_locking_manager/set_state_value', current_state, 'main')
+    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 0, 'main')
     time.sleep(0.2)
-    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 1)
+    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 1, 'main')
     time.sleep(0.2)
-    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 0)
+    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 0, 'main')
 
     assert int(context.model.read_from_model('current_door_state')) == current_state, f'Failed to set the door {door_id} to {door_state}'
 
@@ -81,11 +81,21 @@ def step_when_i_press_the_door_release_button(context:any, button_state:str, doo
 
 @when('all doors get {state}')
 def step_when_all_doors_get_state(context:any, state:str):
-    pass
+    step_then_all_doors_should_be(context, state)
 
 @when('I wait {wait_time} {time_unit}')
 def step_when_i_wait(context:any, wait_time:str, time_unit:str):
-    pass
+    wait_time = int(wait_time.replace("'", "").replace('"', ''))
+    time_unit = time_unit.replace("'", "").replace('"', '')
+
+    if time_unit == 'seconds':
+        time.sleep(wait_time)
+
+    elif time_unit == 'milliseconds':
+        time.sleep(wait_time / 1000)
+
+    else:
+        raise ValueError('time_unit must be either seconds or milliseconds')
 
 @when('I turn {vehicle_state} the vehicle')
 def step_when_i_turn_the_vehicle(context:any, vehicle_state:str):
