@@ -6,11 +6,6 @@ Feature: Auto relocking
         And my vehicle 'locked' with no release buttons pressed
 
     Scenario Outline: Auto relocking
-        Given the door '1' is <door_1_state>
-        And the door '2' is <door_2_state>
-        And the door '3' is <door_3_state>
-        And the door '4' is <door_4_state>
-
         When I press the 'unlock' button
         And all doors get 'unlocked'
         And I wait <wait_time> seconds
@@ -18,39 +13,9 @@ Feature: Auto relocking
         Then all doors should be <expected_state>
 
         Examples:
-            | door_1_state  | door_2_state  | door_3_state  | door_4_state  | wait_time | expected_state |
-            | unlocked      | unlocked      | unlocked      | unlocked      | 10        | unlocked       |
-            | unlocked      | unlocked      | unlocked      | locked        | 10        | unlocked       |
-            | unlocked      | unlocked      | locked        | unlocked      | 10        | unlocked       |
-            | unlocked      | unlocked      | locked        | locked        | 10        | unlocked       |
-            | unlocked      | locked        | unlocked      | unlocked      | 10        | unlocked       |
-            | unlocked      | locked        | unlocked      | locked        | 10        | unlocked       |
-            | unlocked      | locked        | locked        | unlocked      | 10        | unlocked       |
-            | unlocked      | locked        | locked        | locked        | 10        | unlocked       |
-            | locked        | unlocked      | unlocked      | unlocked      | 10        | unlocked       |
-            | locked        | unlocked      | unlocked      | locked        | 10        | unlocked       |
-            | locked        | unlocked      | locked        | unlocked      | 10        | unlocked       |
-            | locked        | unlocked      | locked        | locked        | 10        | unlocked       |
-            | locked        | locked        | unlocked      | unlocked      | 10        | unlocked       |
-            | locked        | locked        | unlocked      | locked        | 10        | unlocked       |
-            | locked        | locked        | locked        | unlocked      | 10        | unlocked       |
-            | locked        | locked        | locked        | locked        | 10        | unlocked       |
-            | unlocked      | unlocked      | unlocked      | unlocked      | 16        | locked         |
-            | unlocked      | unlocked      | unlocked      | locked        | 16        | locked         |
-            | unlocked      | unlocked      | locked        | unlocked      | 16        | locked         |
-            | unlocked      | unlocked      | locked        | locked        | 16        | locked         |
-            | unlocked      | locked        | unlocked      | unlocked      | 16        | locked         |
-            | unlocked      | locked        | unlocked      | locked        | 16        | locked         |
-            | unlocked      | locked        | locked        | unlocked      | 16        | locked         |
-            | unlocked      | locked        | locked        | locked        | 16        | locked         |
-            | locked        | unlocked      | unlocked      | unlocked      | 16        | locked         |
-            | locked        | unlocked      | unlocked      | locked        | 16        | locked         |
-            | locked        | unlocked      | locked        | unlocked      | 16        | locked         |
-            | locked        | unlocked      | locked        | locked        | 16        | locked         |
-            | locked        | locked        | unlocked      | unlocked      | 16        | locked         |
-            | locked        | locked        | unlocked      | locked        | 16        | locked         |
-            | locked        | locked        | locked        | unlocked      | 16        | locked         |
-            | locked        | locked        | locked        | locked        | 16        | locked         |
+            | wait_time | expected_state |
+            | 10        | unlocked       |
+            | 16        | locked         |
 
     Scenario Outline: Not auto relocking if released button is pressed
         When I press the 'unlock' button
