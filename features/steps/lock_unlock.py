@@ -2,14 +2,10 @@ from behave import *
 from features.environment import ModelManager
 import time
 
-@given("my vehicle {state} with no release buttons pressed")
-def step_given_all_door_are_in_state(context:any, state:str):
+
+@given('all doors are {state}')
+def step_given_all_doors_are_in_state(context:any, state:str):
     state = state.replace("'", "").replace('"', '')
-
-    for i in range(4):
-        context.model.write_to_model(f'door_release_{i+1}', 0)
-
-    assert int(context.model.read_from_model(f'doors_release_state')) == 0, f'Failed to set all doors release buttons to 0'
 
     if state == 'locked':
         context.model.write_to_model(f'general_locking_manager/set_state_value', 15, 'main')
@@ -25,8 +21,15 @@ def step_given_all_door_are_in_state(context:any, state:str):
     context.model.write_to_model(f'general_locking_manager/trigger_state_set', 1, 'main')
     time.sleep(0.2)
     context.model.write_to_model(f'general_locking_manager/trigger_state_set', 0, 'main')
-
+    
     assert int(context.model.read_from_model('current_door_state')) == (15 if state == 'locked' else 0), f'Failed to set all doors to {state}'
+
+@given("my vehicle {state} with no release buttons pressed")
+def step_given_my_vehicle_is_in_state(context:any, state:str):
+    step_given_all_doors_are_in_state(context, state)
+
+    for i in range(4):
+        context.model.write_to_model(f'door_release_{i+1}', 0)
 
 @given('the door {door_id} is {door_state}')
 def step_given_the_door_is_in_state(context:any, door_id:str, door_state:str):
@@ -63,7 +66,19 @@ def step_given_i_have_an_authenticated_key_with_me(context:any, key_present:str)
 
 @when('I press the {operation} button')
 def step_when_i_press_the_operation_button(context:any, operation:str):
-    step_given_all_door_are_in_state(context, operation+'ed')
+    operation = operation.replace("'", "").replace('"', '')
+
+    if operation not in ['lock', 'unlock']:
+        raise ValueError('operation must be either lock or unlock')
+
+    context.model.write_to_model(f'{operation}_all_button', 0)
+    time.sleep(0.2)
+
+    context.model.write_to_model(f'{operation}_all_button', 1)
+    time.sleep(0.2)
+
+    context.model.write_to_model(f'{operation}_all_button', 0)
+    time.sleep(0.2)
 
 @when('I {button_state} the door {door_id} release button')
 def step_when_i_press_the_door_release_button(context:any, button_state:str, door_id:str):
