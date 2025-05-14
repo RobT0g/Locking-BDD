@@ -15,7 +15,7 @@ Locking system using BDD
 - Activate the environment with the command `.venv\Scripts\activate`
 - Install all dependencies with the command `pip install -r reqs.txt`
 
-To work with the simulink model you need to have Matlab (2024a or newer) installed. You need to install the Matlab engine for python to stablish communication, recommed following the tutorial [Install MATLAB Engine API for Python](https://www.mathworks.com/help/matlab/matlab_external/install-the-matlab-engine-for-python.html)
+To work with the simulink model you need to have Matlab (2023b or newer) installed. You need to install the Matlab engine for python to stablish communication, recommed following the tutorial [Install MATLAB Engine API for Python](https://www.mathworks.com/help/matlab/matlab_external/install-the-matlab-engine-for-python.html)
 - As we are using a virtual environment here make sure to activate it before the installation process, this will ensure the project can use the library functions!!!
 
 ## Useful Links:
