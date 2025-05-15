@@ -22,3 +22,5 @@ To work with the simulink model you need to have Matlab (2023b or newer) install
 - [Matlab Code Generation Documentation](https://www.mathworks.com/help/overview/code-generation.html?s_tid=hc_panel)
 - [Simulink Coder](https://www.mathworks.com/help/rtw/index.html?s_tid=hc_product_card)
 - [Embedded Coder](https://www.mathworks.com/help/ecoder/index.html?s_tid=hc_product_card)
+- [Design Model Behavior](https://www.mathworks.com/help/simulink/design-models.html)
+- [Specify Sample Time](https://www.mathworks.com/help/simulink/ug/how-to-specify-the-sample-time.html)
