@@ -1,5 +1,5 @@
 currentDir = pwd;
-filename = "main.slx";
+filename = "feature_model.slx";
 
 cd(currentDir);
 addpath(genpath(currentDir));
