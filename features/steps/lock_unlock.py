@@ -24,7 +24,7 @@ def step_given_all_doors_are_in_state(context:any, state:str):
     
     assert int(context.model.read_from_model('current_door_state')) == (15 if state == 'locked' else 0), f'Failed to set all doors to {state}'
 
-@given("my vehicle {state} with no release buttons pressed")
+@given("my vehicle is {state} with no release buttons pressed")
 def step_given_my_vehicle_is_in_state(context:any, state:str):
     step_given_all_doors_are_in_state(context, state)
 
@@ -62,7 +62,16 @@ def step_given_the_door_is_in_state(context:any, door_id:str, door_state:str):
 
 @given('I {key_present} an authenticated key with me')
 def step_given_i_have_an_authenticated_key_with_me(context:any, key_present:str):
-    pass
+    key_status = key_present.replace("'", "").replace('"', '')
+
+    if key_status == 'have':
+        context.model.write_to_model('key_detected', 1)
+    
+    elif key_status == 'do not have':
+        context.model.write_to_model('key_detected', 0)
+    
+    else:
+        raise ValueError('key_present must be either have or do not have')
 
 @when('I press the {operation} button')
 def step_when_i_press_the_operation_button(context:any, operation:str):

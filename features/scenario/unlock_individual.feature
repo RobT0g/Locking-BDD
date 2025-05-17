@@ -3,7 +3,7 @@
 Feature: Unlock individual door
     Background:
         Given I do not have an authenticated key with me
-        And my vehicle 'locked' with no release buttons pressed
+        And my vehicle is 'locked' with no release buttons pressed
 
     Scenario Outline: Unlocking a single door when I have the key
         Given the door <door_id> is 'locked'
@@ -42,7 +42,7 @@ Feature: Unlock individual door
         Given the door <door_id> is 'locked'
         And I have an authenticated key with me
 
-        When I press the door <door_id> unlock button
+        When I 'hold' the door <door_id> release button
         And I wait '1' seconds
         And I 'release' the door <door_id> release button
 
