@@ -10,6 +10,7 @@ class ModelManager:
         self.eng = matlab.engine.connect_matlab()
         self.model_name = model_name[:-4]
         self.name = self.eng.eval('base','model')
+        self.simulation_time = time.time()
 
     def init_model(self):
         '''
@@ -60,6 +61,20 @@ class ModelManager:
         print(f"Getting {model_name}/{var_name} from model with value {value} and type {type(value)}")
         return value
 
+    def get_elapsed_time_ms(self) -> int:
+        """
+        Returns the time elapsed since the ModelManager was instantiated, in milliseconds.
+        """
+
+        elapsed_time = (time.time() - self.start_time) * 1000  # Convert seconds to milliseconds
+        return int(elapsed_time)
+    
+    def update_model_time(self):
+        """
+        Updates the simulation time.
+        """
+
+        self.write_to_model('ClockVal', self.get_elapsed_time_ms())
 
 def before_all(context):
     """
@@ -78,6 +93,13 @@ def before_scenario(context, scenario):
     '''
 
     print(f"Starting scenario: {scenario.name}")
+
+def after_step(context, step):
+    '''
+    Runs after each step
+    '''
+
+    context.model.update_model_time()
 
 def after_scenario(context, scenario):
     '''
