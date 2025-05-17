@@ -10,7 +10,7 @@ class ModelManager:
         self.eng = matlab.engine.connect_matlab()
         self.model_name = model_name[:-4]
         self.name = self.eng.eval('base','model')
-        self.simulation_time = time.time()
+        self.start_time = time.time()
 
     def init_model(self):
         '''
@@ -76,6 +76,22 @@ class ModelManager:
 
         self.write_to_model('ClockVal', self.get_elapsed_time_ms())
 
+    def reset_simulation_time(self):
+        """
+        Resets the simulation time.
+        """
+
+        self.start_time = time.time()
+        self.write_to_model('ClockVal', 0)
+
+    def reset_simulation(self):
+        """
+        Resets the simulation.
+        """
+
+        self.eng.set_param(self.model_name, "SimulationCommand", "stop", nargout=0)
+        self.eng.set_param(self.model_name, "SimulationCommand", "start", nargout=0)
+
 def before_all(context):
     """
     Initializes the simulation environment before all tests.
@@ -93,6 +109,8 @@ def before_scenario(context, scenario):
     '''
 
     print(f"Starting scenario: {scenario.name}")
+    context.model.reset_simulation()
+    context.model.reset_simulation_time()
 
 def after_step(context, step):
     '''
