@@ -1,0 +1,5 @@
+Points to cover while explaining the procedures of BDD
+- Configuring the auto_relock timer on simulink is very challenging, using real_time clock is not as simple as it would seem. The logic for this process is to store the current time at the event of an unlock happening while all doors are locked. After that, the system keeps checking what the current time is waiting for it to be 15s after the original time stored;
+    - To simulate this more easily I used a constant block "outside" of the controller model so that I can dinamically update it's timer while my test steps are running
+    Since using the clock blocks in simulink were a bit difficult I decided to instead use a constant block that will be updated after each step with the time being tracked in python
+- Sometimes the tests were failing because the system was running the 2nd test without "cleaning" the model results from the 1st test. To solve that, all features have a background to start the model in a clean state everytime
