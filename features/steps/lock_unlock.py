@@ -121,10 +121,6 @@ def step_when_i_wait(context:any, wait_time:str, time_unit:str):
     else:
         raise ValueError('time_unit must be either seconds or milliseconds')
 
-@when('I turn {vehicle_state} the vehicle')
-def step_when_i_turn_the_vehicle(context:any, vehicle_state:str):
-    pass
-
 @then('all doors should be {state}')
 def step_then_all_doors_should_be(context:any, state:str):
     state = state.replace("'", "").replace('"', '')
