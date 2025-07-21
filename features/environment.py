@@ -74,7 +74,7 @@ class ModelManager:
         Updates the simulation time.
         """
 
-        self.write_to_model('ClockVal', self.get_elapsed_time_ms())
+        self.write_to_model('clock_val', self.get_elapsed_time_ms())
 
     def reset_simulation_time(self):
         """
@@ -82,7 +82,7 @@ class ModelManager:
         """
 
         self.start_time = time.time()
-        self.write_to_model('ClockVal', 0)
+        self.write_to_model('clock_val', 0)
 
     def reset_simulation(self):
         """

@@ -8,21 +8,15 @@ def step_given_all_doors_are_in_state(context:any, state:str):
     state = state.replace("'", "").replace('"', '')
 
     if state == 'locked':
-        context.model.write_to_model(f'manual_lock', 15, 'main')
+        context.model.write_to_model(f'manual_lock', 15)
 
     elif state == 'unlocked':
-        context.model.write_to_model(f'manual_lock', 0, 'main')
+        context.model.write_to_model(f'manual_lock', 0)
 
     else:
         raise ValueError('state must be either locked or unlocked')
 
-    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 0, 'main')
-    time.sleep(0.2)
-    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 1, 'main')
-    time.sleep(0.2)
-    context.model.write_to_model(f'general_locking_manager/trigger_state_set', 0, 'main')
-    
-    assert int(context.model.read_from_model('current_door_state')) == (15 if state == 'locked' else 0), f'Failed to set all doors to {state}'
+    step_then_all_doors_should_be(context, state)
 
 @given("my vehicle is {state} with no release buttons pressed")
 def step_given_my_vehicle_is_in_state(context:any, state:str):
@@ -125,11 +119,13 @@ def step_when_i_wait(context:any, wait_time:str, time_unit:str):
 def step_then_all_doors_should_be(context:any, state:str):
     state = state.replace("'", "").replace('"', '')
 
+    door_states = [context.model.read_from_model(f'door_lock_state_{i}') for i in range(1, 5)]
+
     if state == 'locked':
-        assert int(context.model.read_from_model('current_door_state')) == 15, f'Failed to set all doors to {state}'
+        assert all(d == 1 for d in door_states), f'Failed to set all doors to {state}'
 
     elif state == 'unlocked':
-        assert int(context.model.read_from_model('current_door_state')) == 0, f'Failed to set all doors to {state}'
+        assert all(d == 0 for d in door_states), f'Failed to set all doors to {state}'
 
     else:
         raise ValueError('state must be either locked or unlocked')
