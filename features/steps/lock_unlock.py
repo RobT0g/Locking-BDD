@@ -8,10 +8,10 @@ def step_given_all_doors_are_in_state(context:any, state:str):
     state = state.replace("'", "").replace('"', '')
 
     if state == 'locked':
-        context.model.write_to_model(f'general_locking_manager/set_state_value', 15, 'main')
+        context.model.write_to_model(f'manual_lock', 15, 'main')
 
     elif state == 'unlocked':
-        context.model.write_to_model(f'general_locking_manager/set_state_value', 0, 'main')
+        context.model.write_to_model(f'manual_lock', 0, 'main')
 
     else:
         raise ValueError('state must be either locked or unlocked')
