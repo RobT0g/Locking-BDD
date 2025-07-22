@@ -42,14 +42,7 @@ def step_given_my_vehicle_is_in_state(context:any, state:str):
     for i in range(4):
         context.model.write_to_model(f'door_release_{i+1}', 0)
 
-@given('the door {door_id} is {expected_state}')
-def step_given_the_door_is_in_state(context:any, door_id:str, expected_state:str):
-    door_id = int(door_id.replace("'", "").replace('"', ''))-1
-    expected_state = expected_state.replace("'", "").replace('"', '')
-
-    if door_id < 0 or door_id > 3:
-        raise ValueError('door_id must be between 1 and 4')
-
+def set_door_lock_model(context:any, door_id:int, expected_state:int):
     current_state = get_all_doors_locking_state(context)
 
     if expected_state == 'locked':
@@ -75,6 +68,33 @@ def step_given_the_door_is_in_state(context:any, door_id:str, expected_state:str
     context.model.write_to_model('manual_lock_rqst', 0)
 
     assert get_all_doors_locking_state(context)[door_id] == current_state[door_id], f'Failed to set the door {door_id} to {expected_state}. Expected {current_state[door_id]}, got {get_all_doors_locking_state(context)[door_id]}'
+
+def set_door_release_model(context:any, door_id:int, expected_state:int):
+    if expected_state == 'open':
+        context.model.write_to_model(f'door_open_{door_id+1}', 1)
+
+    elif expected_state == 'closed':
+        context.model.write_to_model(f'door_open_{door_id+1}', 0)
+    
+    else:
+        raise ValueError('door_state must be either open or closed')
+
+@given('the door {door_id} is {expected_state}')
+def step_given_the_door_is_in_state(context:any, door_id:str, expected_state:str):
+    door_id = int(door_id.replace("'", "").replace('"', ''))-1
+    expected_state = expected_state.replace("'", "").replace('"', '')
+
+    if door_id < 0 or door_id > 3:
+        raise ValueError('door_id must be between 1 and 4')
+
+    if expected_state in ['locked', 'unlocked']:
+        set_door_lock_model(context, door_id, expected_state)
+    
+    elif expected_state in ['open', 'closed']:
+        set_door_release_model(context, door_id, expected_state)
+
+    else:
+        raise ValueError('expected_state must be either locked, unlocked, open or closed')
 
 @given('I {key_present} an authenticated key with me')
 def step_given_i_have_an_authenticated_key_with_me(context:any, key_present:str):
