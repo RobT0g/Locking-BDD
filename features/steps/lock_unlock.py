@@ -2,11 +2,17 @@ from behave import *
 from features.environment import ModelManager
 import time
 
-def get_all_doors_state(context) -> list[int]:
+def get_all_doors_locking_state(context) -> list[int]:
     """
     Returns the state of all doors as a list.
     """
     return [int(context.model.read_from_model(f'door_lock_state_{i}')) for i in range(1, 5)]
+
+def get_all_doors_release_state(context) -> list[int]:
+    """
+    Returns the release state of all doors as a list.
+    """
+    return [int(context.model.read_from_model(f'door_release_state_{i}')) for i in range(1, 5)]
 
 @given('all doors are {state}')
 def step_given_all_doors_are_in_state(context:any, state:str):
@@ -44,7 +50,7 @@ def step_given_the_door_is_in_state(context:any, door_id:str, expected_state:str
     if door_id < 0 or door_id > 3:
         raise ValueError('door_id must be between 1 and 4')
 
-    current_state = get_all_doors_state(context)
+    current_state = get_all_doors_locking_state(context)
 
     if expected_state == 'locked':
         current_state[door_id] = 1
@@ -68,7 +74,7 @@ def step_given_the_door_is_in_state(context:any, door_id:str, expected_state:str
     time.sleep(0.2)
     context.model.write_to_model('manual_lock_rqst', 0)
 
-    assert get_all_doors_state(context)[door_id] == current_state[door_id], f'Failed to set the door {door_id} to {expected_state}. Expected {current_state[door_id]}, got {get_all_doors_state(context)[door_id]}'
+    assert get_all_doors_locking_state(context)[door_id] == current_state[door_id], f'Failed to set the door {door_id} to {expected_state}. Expected {current_state[door_id]}, got {get_all_doors_locking_state(context)[door_id]}'
 
 @given('I {key_present} an authenticated key with me')
 def step_given_i_have_an_authenticated_key_with_me(context:any, key_present:str):
@@ -148,27 +154,41 @@ def step_then_all_doors_should_be(context:any, state:str):
 
 @then('the door {door_id} should be {state}')
 def step_then_the_door_should_be(context:any, door_id:str, state:str):
-    door_id = int(door_id.replace("'", "").replace('"', ''))
+    door_id = int(door_id.replace("'", "").replace('"', ''))-1
     state = state.replace("'", "").replace('"', '')
 
-    if door_id < 1 or door_id > 4:
+    if door_id < 0 or door_id > 3:
         raise ValueError('door_id must be between 1 and 4')
 
-    current_state = None
     if state in ['locked', 'unlocked']:
-        current_state = context.model.read_from_model('current_door_state')
+        check_door_is_in_lock_state(context, door_id, state)
 
     elif state in ['held', 'released']:
-        current_state = context.model.read_from_model('doors_release_state')
-
-    assert current_state >= 0 and current_state < 16, 'Failed to get the current_door_state'
-    print(f"current_state: {bin(current_state)}, checking if door {door_id} is {state}")
-
-    if state in ['locked', 'released']:
-        assert current_state & 2**(door_id-1) == 2**(door_id-1), f'Failed to set the door {door_id} to {state}'
-
-    elif state in ['unlocked', 'held']:
-        assert current_state & 2**(door_id-1) == 0, f'Failed to set the door {door_id} to {state}'
+        check_door_is_in_release_state(context, door_id, state)
 
     else:
         raise ValueError('state must be either locked, unlocked, held or released')
+
+def check_door_is_in_lock_state(context:any, door_id:int, expected_state:str):
+    current_state = get_all_doors_locking_state(context)
+
+    if expected_state == 'locked':
+        assert current_state[door_id] == 1, f'Failed to set the door {door_id} to {expected_state}. Expected {current_state[door_id]}, got {get_all_doors_locking_state(context)[door_id]}'
+
+    elif expected_state == 'unlocked':
+        assert current_state[door_id] == 0, f'Failed to set the door {door_id} to {expected_state}. Expected {current_state[door_id]}, got {get_all_doors_locking_state(context)[door_id]}'
+
+    else:
+        raise ValueError('expected_state must be either locked or unlocked')
+
+def check_door_is_in_release_state(context:any, door_id:int, expected_state:str):
+    current_state = get_all_doors_release_state(context)
+
+    if expected_state == 'held':
+        assert current_state[door_id] == 0, f'Failed to set the door {door_id} to {expected_state}. Expected {current_state[door_id]}, got {current_state}'
+
+    elif expected_state == 'released':
+        assert current_state[door_id] == 1, f'Failed to set the door {door_id} to {expected_state}. Expected {current_state[door_id]}, got {current_state}'
+
+    else:
+        raise ValueError('expected_state must be either held or released')
