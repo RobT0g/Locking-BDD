@@ -38,10 +38,10 @@ def step_given_my_vehicle_is_in_state(context:any, state:str):
 
 @given('the door {door_id} is {expected_state}')
 def step_given_the_door_is_in_state(context:any, door_id:str, expected_state:str):
-    door_id = int(door_id.replace("'", "").replace('"', ''))
+    door_id = int(door_id.replace("'", "").replace('"', ''))-1
     expected_state = expected_state.replace("'", "").replace('"', '')
 
-    if door_id < 1 or door_id > 4:
+    if door_id < 0 or door_id > 3:
         raise ValueError('door_id must be between 1 and 4')
 
     current_state = get_all_doors_state(context)
@@ -55,14 +55,18 @@ def step_given_the_door_is_in_state(context:any, door_id:str, expected_state:str
     else:
         raise ValueError('door_state must be either locked or unlocked')
 
-    set_state = sum(2**i for i, state in enumerate(current_state) if state == 1)
+    set_state = 0
+    for i in range(4):
+        if current_state[i] == 1:
+            set_state += 2**i
+
     context.model.write_to_model(f'manual_lock', set_state)
 
-    context.write_to_model('manual_lock_rqst', 0)
+    context.model.write_to_model('manual_lock_rqst', 0)
     time.sleep(0.2)
-    context.write_to_model('manual_lock_rqst', 1)
+    context.model.write_to_model('manual_lock_rqst', 1)
     time.sleep(0.2)
-    context.write_to_model('manual_lock_rqst', 0)
+    context.model.write_to_model('manual_lock_rqst', 0)
 
     assert get_all_doors_state(context)[door_id] == current_state[door_id], f'Failed to set the door {door_id} to {expected_state}. Expected {current_state[door_id]}, got {get_all_doors_state(context)[door_id]}'
 
