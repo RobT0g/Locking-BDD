@@ -7,13 +7,13 @@ Feature: Locking Feedback
         When I press the 'lock' button
 
         Then all doors should be 'locked'
-        And I should receive a 'locking confirmation' feedback
+        And I should receive a 'locking confirmation' feedback within '500' ms
 
     # Scenario: Unlock feedback when unlocking the vehicle
     #     When I press the 'unlock' button
 
     #     Then all doors should be 'unlocked'
-    #     And I should receive a 'unlocking confirmation' feedback
+    #     And I should receive a 'unlocking confirmation' feedback within '500' ms
 
     # Scenario Outline: Failure feedback when trying to lock the vehicle with one door open
     #     Given the door <door_id> is 'unlocked'
@@ -22,7 +22,7 @@ Feature: Locking Feedback
     #     When I press the 'lock' button
 
     #     Then all doors should be 'locked'
-    #     And I should receive a 'locking failed' feedback
+    #     And I should receive a 'locking failed' feedback within '500' ms
 
     #     Examples:
     #         | door_id |
@@ -38,4 +38,4 @@ Feature: Locking Feedback
     #     When I press the 'lock' button
 
     #     Then all doors should be 'unlocked'
-    #     And I should receive a 'locking failed' feedback
+    #     And I should receive a 'locking failed' feedback within '500' ms

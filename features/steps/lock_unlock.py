@@ -169,6 +169,38 @@ def step_then_the_door_should_be(context:any, door_id:str, state:str):
     else:
         raise ValueError('state must be either locked, unlocked, held or released')
 
+@then('I should receive a {feedback_type} feedback within {timeout} ms')
+def step_then_i_should_receive_feedback(context:any, feedback_type:str, timeout:str):
+    feedback_type = feedback_type.replace("'", "").replace('"', '')
+    timeout = int(timeout.replace("'", "").replace('"', ''))
+
+    if feedback_type == 'locking confirmation':
+        feedback_type = 1
+
+    elif feedback_type == 'unlocking confirmation':
+        feedback_type = 2
+
+    elif feedback_type == 'locking failed':
+        feedback_type = 3
+    
+    else:
+        assert False, f'Unknown feedback type: {feedback_type}'
+
+    start_time = context.model.get_elapsed_time_ms()
+    current_feedback = context.model.read_from_model('locking_feedback')
+    condition_met = False
+
+    while (context.model.get_elapsed_time_ms() - start_time) < timeout:
+        if current_feedback == feedback_type:
+            condition_met = True
+            break
+
+        time.sleep(0.05)
+        context.model.update_model_time()
+        current_feedback = context.model.read_from_model('locking_feedback')
+
+    assert condition_met, f'Expected feedback "{feedback_type}" not received within {timeout} ms. Last received feedback: "{current_feedback}"'
+
 def check_door_is_in_lock_state(context:any, door_id:int, expected_state:str):
     current_state = get_all_doors_locking_state(context)
 
