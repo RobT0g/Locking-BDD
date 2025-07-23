@@ -18,7 +18,19 @@ def get_all_doors_release_state(context) -> list[int]:
 def step_given_all_doors_are_in_state(context:any, state:str):
     state = state.replace("'", "").replace('"', '')
 
-    if state == 'locked':
+    if state == 'open':
+        for i in range(1, 5):
+            context.model.write_to_model(f'door_open_{i}', 1)
+        
+        return
+
+    elif state == 'closed':
+        for i in range(1, 5):
+            context.model.write_to_model(f'door_open_{i}', 0)
+
+        return
+
+    elif state == 'locked':
         context.model.write_to_model(f'manual_lock', 15)
 
     elif state == 'unlocked':
