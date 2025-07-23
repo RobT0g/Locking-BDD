@@ -4,6 +4,8 @@ Feature: Lock all
     Background:
         Given I do not have an authenticated key with me
         And my vehicle is 'locked' with no release buttons pressed
+        And all doors are 'closed'
+        And the locking system is 'operational'
 
     Scenario Outline: Locking all doors
         Given the door '1' is <door_1_state>
