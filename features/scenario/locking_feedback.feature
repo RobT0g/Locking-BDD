@@ -4,17 +4,17 @@ Feature: Locking Feedback
         And my vehicle is 'locked' with no release buttons pressed
         And all doors are 'closed'
 
-    # Scenario: Lock feedback when locking the vehicle
-    #     When I press the 'lock' button
+    Scenario: Lock feedback when locking the vehicle
+        When I press the 'lock' button
 
-    #     Then all doors should be 'locked'
-    #     And I should receive a 'locking confirmation' feedback within '500' ms
+        Then all doors should be 'locked'
+        And I should receive a 'locking confirmation' feedback within '500' ms
 
-    # Scenario: Unlock feedback when unlocking the vehicle
-    #     When I press the 'unlock' button
+    Scenario: Unlock feedback when unlocking the vehicle
+        When I press the 'unlock' button
 
-    #     Then all doors should be 'unlocked'
-    #     And I should receive a 'unlocking confirmation' feedback within '500' ms
+        Then all doors should be 'unlocked'
+        And I should receive a 'unlocking confirmation' feedback within '500' ms
 
     Scenario Outline: Failure feedback when trying to lock the vehicle with one door open
         Given the door <door_id> is 'unlocked'
