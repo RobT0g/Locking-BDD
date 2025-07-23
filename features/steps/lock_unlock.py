@@ -206,6 +206,8 @@ def step_then_i_should_receive_feedback(context:any, feedback_type:str, timeout:
     feedback_type = feedback_type.replace("'", "").replace('"', '')
     timeout = int(timeout.replace("'", "").replace('"', ''))
 
+    context.model.scenario_feedback_count += 1
+
     if feedback_type == 'locking confirmation':
         feedback_type = 1
 
@@ -213,25 +215,26 @@ def step_then_i_should_receive_feedback(context:any, feedback_type:str, timeout:
         feedback_type = 2
 
     elif feedback_type == 'locking failed':
-        feedback_type = 3
+        feedback_type = 0
     
     else:
         assert False, f'Unknown feedback type: {feedback_type}'
 
     start_time = context.model.get_elapsed_time_ms()
-    current_feedback = context.model.read_from_model('locking_feedback')
     condition_met = False
 
     while (context.model.get_elapsed_time_ms() - start_time) < timeout:
-        if current_feedback == feedback_type:
+        if context.model.scenario_feedback_transitions[-1] == feedback_type:
             condition_met = True
             break
 
         time.sleep(0.05)
         context.model.update_model_time()
-        current_feedback = context.model.read_from_model('locking_feedback')
+        context.model.update_feedback()
 
-    assert condition_met, f'Expected feedback "{feedback_type}" not received within {timeout} ms. Last received feedback: "{current_feedback}"'
+    assert context.model.scenario_feedback_count == len(context.model.scenario_feedback_transitions), \
+        f'Feedback count mismatch: expected {context.model.scenario_feedback_count}, got {len(context.model.scenario_feedback_transitions)}'
+    assert condition_met, f'Expected feedback "{feedback_type}" not received within {timeout} ms. Last received feedback: "{context.model.last_feedback}"'
 
 def check_door_is_in_lock_state(context:any, door_id:int, expected_state:str):
     current_state = get_all_doors_locking_state(context)
