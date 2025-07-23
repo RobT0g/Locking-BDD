@@ -192,6 +192,5 @@ codegen/
 octave-workspace
 
 resources
-reports
 pretty.output
 *_grt_rtw
