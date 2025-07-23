@@ -18,7 +18,19 @@ def get_all_doors_release_state(context) -> list[int]:
 def step_given_all_doors_are_in_state(context:any, state:str):
     state = state.replace("'", "").replace('"', '')
 
-    if state == 'locked':
+    if state == 'open':
+        for i in range(1, 5):
+            context.model.write_to_model(f'door_open_{i}', 1)
+        
+        return
+
+    elif state == 'closed':
+        for i in range(1, 5):
+            context.model.write_to_model(f'door_open_{i}', 0)
+
+        return
+
+    elif state == 'locked':
         context.model.write_to_model(f'manual_lock', 15)
 
     elif state == 'unlocked':
@@ -42,14 +54,7 @@ def step_given_my_vehicle_is_in_state(context:any, state:str):
     for i in range(4):
         context.model.write_to_model(f'door_release_{i+1}', 0)
 
-@given('the door {door_id} is {expected_state}')
-def step_given_the_door_is_in_state(context:any, door_id:str, expected_state:str):
-    door_id = int(door_id.replace("'", "").replace('"', ''))-1
-    expected_state = expected_state.replace("'", "").replace('"', '')
-
-    if door_id < 0 or door_id > 3:
-        raise ValueError('door_id must be between 1 and 4')
-
+def set_door_lock_model(context:any, door_id:int, expected_state:int):
     current_state = get_all_doors_locking_state(context)
 
     if expected_state == 'locked':
@@ -76,6 +81,33 @@ def step_given_the_door_is_in_state(context:any, door_id:str, expected_state:str
 
     assert get_all_doors_locking_state(context)[door_id] == current_state[door_id], f'Failed to set the door {door_id} to {expected_state}. Expected {current_state[door_id]}, got {get_all_doors_locking_state(context)[door_id]}'
 
+def set_door_release_model(context:any, door_id:int, expected_state:int):
+    if expected_state == 'open':
+        context.model.write_to_model(f'door_open_{door_id+1}', 1)
+
+    elif expected_state == 'closed':
+        context.model.write_to_model(f'door_open_{door_id+1}', 0)
+    
+    else:
+        raise ValueError('door_state must be either open or closed')
+
+@given('the door {door_id} is {expected_state}')
+def step_given_the_door_is_in_state(context:any, door_id:str, expected_state:str):
+    door_id = int(door_id.replace("'", "").replace('"', ''))-1
+    expected_state = expected_state.replace("'", "").replace('"', '')
+
+    if door_id < 0 or door_id > 3:
+        raise ValueError('door_id must be between 1 and 4')
+
+    if expected_state in ['locked', 'unlocked']:
+        set_door_lock_model(context, door_id, expected_state)
+    
+    elif expected_state in ['open', 'closed']:
+        set_door_release_model(context, door_id, expected_state)
+
+    else:
+        raise ValueError('expected_state must be either locked, unlocked, open or closed')
+
 @given('I {key_present} an authenticated key with me')
 def step_given_i_have_an_authenticated_key_with_me(context:any, key_present:str):
     key_status = key_present.replace("'", "").replace('"', '')
@@ -88,6 +120,19 @@ def step_given_i_have_an_authenticated_key_with_me(context:any, key_present:str)
     
     else:
         raise ValueError('key_present must be either have or do not have')
+
+@given('the locking system is {fault_state}')
+def step_given_there_is_a_failure_in_the_locking_system(context:any, fault_state:str):
+    fault_state = fault_state.replace("'", "").replace('"', '')
+
+    if fault_state == 'faulted':
+        context.model.write_to_model('lock_fault', 1)
+
+    elif fault_state == 'operational':
+        context.model.write_to_model('lock_fault', 0)
+
+    else:
+        raise ValueError('fault_state must be either faulted or operational')
 
 @when('I press the {operation} button')
 def step_when_i_press_the_operation_button(context:any, operation:str):
@@ -168,6 +213,41 @@ def step_then_the_door_should_be(context:any, door_id:str, state:str):
 
     else:
         raise ValueError('state must be either locked, unlocked, held or released')
+
+@then('I should receive a {feedback_type} feedback within {timeout} ms')
+def step_then_i_should_receive_feedback(context:any, feedback_type:str, timeout:str):
+    feedback_type = feedback_type.replace("'", "").replace('"', '')
+    timeout = int(timeout.replace("'", "").replace('"', ''))
+
+    context.model.scenario_feedback_count += 1
+
+    if feedback_type == 'locking confirmation':
+        feedback_type = 1
+
+    elif feedback_type == 'unlocking confirmation':
+        feedback_type = 2
+
+    elif feedback_type == 'operation failed':
+        feedback_type = 0
+    
+    else:
+        assert False, f'Unknown feedback type: {feedback_type}'
+
+    start_time = context.model.get_elapsed_time_ms()
+    condition_met = False
+
+    while (context.model.get_elapsed_time_ms() - start_time) < timeout:
+        if context.model.scenario_feedback_transitions[-1] == feedback_type:
+            condition_met = True
+            break
+
+        time.sleep(0.05)
+        context.model.update_model_time()
+        context.model.update_feedback()
+
+    assert context.model.scenario_feedback_count == len(context.model.scenario_feedback_transitions), \
+        f'Feedback count mismatch: expected {context.model.scenario_feedback_count}, got {len(context.model.scenario_feedback_transitions)}'
+    assert condition_met, f'Expected feedback "{feedback_type}" not received within {timeout} ms. Last received feedback: "{context.model.last_feedback}"'
 
 def check_door_is_in_lock_state(context:any, door_id:int, expected_state:str):
     current_state = get_all_doors_locking_state(context)
