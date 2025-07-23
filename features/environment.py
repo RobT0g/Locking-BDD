@@ -2,7 +2,6 @@ from behave import *
 import matlab.engine
 import time
 
-
 latency = 2
 
 class ModelManager:

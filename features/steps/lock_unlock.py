@@ -121,6 +121,19 @@ def step_given_i_have_an_authenticated_key_with_me(context:any, key_present:str)
     else:
         raise ValueError('key_present must be either have or do not have')
 
+@given('the locking system is {fault_state}')
+def step_given_there_is_a_failure_in_the_locking_system(context:any, fault_state:str):
+    fault_state = fault_state.replace("'", "").replace('"', '')
+
+    if fault_state == 'faulted':
+        context.model.write_to_model('lock_fault', 1)
+
+    elif fault_state == 'operational':
+        context.model.write_to_model('lock_fault', 0)
+
+    else:
+        raise ValueError('fault_state must be either faulted or operational')
+
 @when('I press the {operation} button')
 def step_when_i_press_the_operation_button(context:any, operation:str):
     operation = operation.replace("'", "").replace('"', '')
@@ -214,7 +227,7 @@ def step_then_i_should_receive_feedback(context:any, feedback_type:str, timeout:
     elif feedback_type == 'unlocking confirmation':
         feedback_type = 2
 
-    elif feedback_type == 'locking failed':
+    elif feedback_type == 'operation failed':
         feedback_type = 0
     
     else:
