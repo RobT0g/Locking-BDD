@@ -23,7 +23,6 @@ Feature: Unlock individual door
             | 3       |
             | 4       |
 
-    # How can I test this?
     Scenario Outline: Unlocking multiple single doors when I have the key
         Given the door <door_id> is 'locked'
         And I have an authenticated key with me

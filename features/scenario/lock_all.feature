@@ -33,7 +33,7 @@ Feature: Lock all
             | locked       | locked       | unlocked     | unlocked     |
             | locked       | locked       | unlocked     | locked       |
             | locked       | locked       | locked       | unlocked     |
-    #         | locked       | locked       | locked       | locked       |
+            | locked       | locked       | locked       | locked       |
 
 Scenario Outline: Door cannot be released when locked
     Given the door <door_id> is 'locked'
