@@ -28,10 +28,10 @@ Feature: Locking Feedback
 
         Examples:
             | door_id | door_open_state | feedback_received    |
-            | 1       | open            | operation failed       |
-            | 2       | open            | operation failed       |
-            | 3       | open            | operation failed       |
-            | 4       | open            | operation failed       |
+            | 1       | open            | operation failed     |
+            | 2       | open            | operation failed     |
+            | 3       | open            | operation failed     |
+            | 4       | open            | operation failed     |
             | 1       | closed          | locking confirmation |
             | 2       | closed          | locking confirmation |
             | 3       | closed          | locking confirmation |
