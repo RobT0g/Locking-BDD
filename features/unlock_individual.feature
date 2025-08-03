@@ -5,7 +5,6 @@ Feature: Unlock individual door
         Given I do not have an authenticated key with me
         And my vehicle is 'locked' with no release buttons pressed
         And all doors are 'closed'
-        And the locking system is 'operational'
 
     Scenario Outline: Unlocking a single door when I have the key
         Given the door <door_id> is 'locked'
