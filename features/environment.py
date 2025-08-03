@@ -5,10 +5,11 @@ import time
 latency = 2
 
 class ModelManager:
-    def __init__(self, model_name:str):
+    def __init__(self):
         self.eng = matlab.engine.connect_matlab()
-        self.model_name = model_name[:-4]
-        self.name = self.eng.eval('base','model')
+        self.model_name = self.eng.eval('base','model')
+        print(f'> Testing model: {self.model_name}')
+
         self.start_time = time.time()
         self.scenario_feedback_count = 0
         self.scenario_feedback_transitions = []
@@ -121,11 +122,8 @@ def before_all(context):
     """
     Initializes the simulation environment before all tests.
     """
-
-    model_name = "feature_model.slx"
-    print(f'> Testing model: {model_name}')
-
-    context.model = ModelManager(model_name)
+    
+    context.model = ModelManager()
     context.model.init_model()
 
 def before_scenario(context, scenario):

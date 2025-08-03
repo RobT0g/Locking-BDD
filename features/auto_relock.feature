@@ -5,7 +5,6 @@ Feature: Auto relocking
         Given I do not have an authenticated key with me
         And my vehicle is 'locked' with no release buttons pressed
         And all doors are 'closed'
-        And the locking system is 'operational'
 
     Scenario Outline: Auto relocking
         Given all doors are <initial_state>
