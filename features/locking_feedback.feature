@@ -4,7 +4,7 @@ Feature: Locking Feedback
         And my vehicle is 'locked' with no release buttons pressed
         And all doors are 'closed'
 
-    Scenario: Locking feedback when locking or unlocking the vehicle
+    Scenario Outline: Locking feedback when locking or unlocking the vehicle
         When I press the <operation> button
 
         Then all doors should be <state>
