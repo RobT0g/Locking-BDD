@@ -2,15 +2,18 @@ from behave import *
 import matlab.engine
 import time
 
-
 latency = 2
 
 class ModelManager:
-    def __init__(self, model_name:str):
+    def __init__(self):
         self.eng = matlab.engine.connect_matlab()
-        self.model_name = model_name[:-4]
-        self.name = self.eng.eval('base','model')
+        self.model_name = self.eng.eval('base','model')
+        print(f'> Testing model: {self.model_name}')
+
         self.start_time = time.time()
+        self.scenario_feedback_count = 0
+        self.scenario_feedback_transitions = []
+        self.last_feedback = None
 
     def init_model(self):
         '''
@@ -74,7 +77,7 @@ class ModelManager:
         Updates the simulation time.
         """
 
-        self.write_to_model('ClockVal', self.get_elapsed_time_ms())
+        self.write_to_model('clock_val', self.get_elapsed_time_ms())
 
     def reset_simulation_time(self):
         """
@@ -82,7 +85,30 @@ class ModelManager:
         """
 
         self.start_time = time.time()
-        self.write_to_model('ClockVal', 0)
+        self.write_to_model('clock_val', 0)
+
+    def reset_simulation_feedback(self):
+        """
+        Resets the simulation feedback.
+        """
+
+        self.scenario_feedback_count = 0
+        self.scenario_feedback_transitions = []
+        self.last_feedback = self.read_from_model('locking_feedback')
+
+    def update_feedback(self):
+        """
+        Updates the feedback in the simulation.
+        Args:
+            feedback (int): The feedback value to update.
+        """
+
+        current_feedback = self.read_from_model('locking_feedback')
+
+        if current_feedback != self.last_feedback:
+            self.scenario_feedback_transitions.append(current_feedback%3)
+            self.last_feedback = current_feedback
+            print(f"Feedback received: {current_feedback}")
 
     def reset_simulation(self):
         """
@@ -96,11 +122,8 @@ def before_all(context):
     """
     Initializes the simulation environment before all tests.
     """
-
-    model_name = "feature_model.slx"
-    print(f'> Testing model: {model_name}')
-
-    context.model = ModelManager(model_name)
+    
+    context.model = ModelManager()
     context.model.init_model()
 
 def before_scenario(context, scenario):
@@ -111,6 +134,7 @@ def before_scenario(context, scenario):
     print(f"Starting scenario: {scenario.name}")
     context.model.reset_simulation()
     context.model.reset_simulation_time()
+    context.model.reset_simulation_feedback()
 
 def after_step(context, step):
     '''
@@ -118,6 +142,7 @@ def after_step(context, step):
     '''
 
     context.model.update_model_time()
+    context.model.update_feedback()
 
 def after_scenario(context, scenario):
     '''

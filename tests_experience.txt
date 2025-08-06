@@ -3,3 +3,4 @@ Points to cover while explaining the procedures of BDD
     - To simulate this more easily I used a constant block "outside" of the controller model so that I can dinamically update it's timer while my test steps are running
     Since using the clock blocks in simulink were a bit difficult I decided to instead use a constant block that will be updated after each step with the time being tracked in python
 - Sometimes the tests were failing because the system was running the 2nd test without "cleaning" the model results from the 1st test. To solve that, all features have a background to start the model in a clean state everytime
+- After creating the lock fault logic, I need to clean the fault for every scenario

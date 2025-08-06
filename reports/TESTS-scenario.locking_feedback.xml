@@ -1,0 +1,1025 @@
+<testsuite name="scenario.locking_feedback.Locking Feedback" tests="14" errors="0" failures="0" skipped="0" time="136.962689" timestamp="2025-07-23T11:35:33.361876" hostname="WGC3PDCJW0N64"><testcase classname="scenario.locking_feedback.Locking Feedback" name="Lock feedback when locking the vehicle" status="passed" time="7.088304"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Lock feedback when locking the vehicle
+    Given I do not have an authenticated key with me ... passed in 0.354s
+    And my vehicle is 'locked' with no release buttons pressed ... passed in 3.274s
+    And all doors are 'closed' ... passed in 1.083s
+    And the locking system is 'operational' ... passed in 0.268s
+    When I press the 'lock' button ... passed in 1.038s
+    Then all doors should be 'locked' ... passed in 1.071s
+    And I should receive a 'locking confirmation' feedback within '500' ms ... passed in 0.001s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+Sending feature_model/key_detected to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 1295 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 15 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/door_release_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 5221 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 6854 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_fault to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 7666 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 1 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 9261 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 7 and type <class 'int'>
+Feedback received: 7
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 10689 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 7 and type <class 'int'>
+Sending feature_model/clock_val to model with value 11235 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 7 and type <class 'int'>
+
+]]>
+</system-out></testcase><testcase classname="scenario.locking_feedback.Locking Feedback" name="Unlock feedback when unlocking the vehicle" status="passed" time="7.095814"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Unlock feedback when unlocking the vehicle
+    Given I do not have an authenticated key with me ... passed in 0.357s
+    And my vehicle is 'locked' with no release buttons pressed ... passed in 3.273s
+    And all doors are 'closed' ... passed in 1.071s
+    And the locking system is 'operational' ... passed in 0.288s
+    When I press the 'unlock' button ... passed in 1.038s
+    Then all doors should be 'unlocked' ... passed in 1.068s
+    And I should receive a 'unlocking confirmation' feedback within '500' ms ... passed in 0.001s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+Sending feature_model/key_detected to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 1252 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 15 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/door_release_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 5191 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 6814 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_fault to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 7635 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/unlock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/unlock_all_button to model with value 1 and type <class 'int'>
+Sending feature_model/unlock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 9210 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 8 and type <class 'int'>
+Feedback received: 8
+Getting feature_model/door_lock_state_1 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 10636 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 8 and type <class 'int'>
+Sending feature_model/clock_val to model with value 11178 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 8 and type <class 'int'>
+
+]]>
+</system-out></testcase><testcase classname="scenario.locking_feedback.Locking Feedback" name="Failure feedback when trying to lock the vehicle with one door open -- @1.1 " status="passed" time="10.65442"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario Outline: Failure feedback when trying to lock the vehicle with one door open -- @1.1 
+    Given I do not have an authenticated key with me ... passed in 0.400s
+    And my vehicle is 'locked' with no release buttons pressed ... passed in 3.326s
+    And all doors are 'closed' ... passed in 1.078s
+    And the locking system is 'operational' ... passed in 0.270s
+    Given the door 1 is 'unlocked' ... passed in 3.213s
+    And the door 1 is open ... passed in 0.273s
+    When I press the 'lock' button ... passed in 1.018s
+    Then all doors should be 'locked' ... passed in 1.075s
+    And I should receive a operation failed feedback within '500' ms ... passed in 0.001s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+Sending feature_model/key_detected to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 1295 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 15 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/door_release_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 5281 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 6898 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_fault to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 7719 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 14 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 11485 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_1 to model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 12298 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 1 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 13865 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 3 and type <class 'int'>
+Feedback received: 3
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 15302 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 3 and type <class 'int'>
+Sending feature_model/clock_val to model with value 15842 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 3 and type <class 'int'>
+
+]]>
+</system-out></testcase><testcase classname="scenario.locking_feedback.Locking Feedback" name="Failure feedback when trying to lock the vehicle with one door open -- @1.2 " status="passed" time="10.630464"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario Outline: Failure feedback when trying to lock the vehicle with one door open -- @1.2 
+    Given I do not have an authenticated key with me ... passed in 0.368s
+    And my vehicle is 'locked' with no release buttons pressed ... passed in 3.319s
+    And all doors are 'closed' ... passed in 1.079s
+    And the locking system is 'operational' ... passed in 0.258s
+    Given the door 2 is 'unlocked' ... passed in 3.234s
+    And the door 2 is open ... passed in 0.282s
+    When I press the 'lock' button ... passed in 1.022s
+    Then all doors should be 'locked' ... passed in 1.068s
+    And I should receive a operation failed feedback within '500' ms ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+Sending feature_model/key_detected to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 1277 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 15 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/door_release_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 5269 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 6889 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_fault to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 7698 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 13 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 11492 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_2 to model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 12314 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 1 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 13880 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 6 and type <class 'int'>
+Feedback received: 6
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 15307 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 6 and type <class 'int'>
+Sending feature_model/clock_val to model with value 15845 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 6 and type <class 'int'>
+
+]]>
+</system-out></testcase><testcase classname="scenario.locking_feedback.Locking Feedback" name="Failure feedback when trying to lock the vehicle with one door open -- @1.3 " status="passed" time="10.594106"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario Outline: Failure feedback when trying to lock the vehicle with one door open -- @1.3 
+    Given I do not have an authenticated key with me ... passed in 0.369s
+    And my vehicle is 'locked' with no release buttons pressed ... passed in 3.278s
+    And all doors are 'closed' ... passed in 1.070s
+    And the locking system is 'operational' ... passed in 0.261s
+    Given the door 3 is 'unlocked' ... passed in 3.249s
+    And the door 3 is open ... passed in 0.273s
+    When I press the 'lock' button ... passed in 1.028s
+    Then all doors should be 'locked' ... passed in 1.067s
+    And I should receive a operation failed feedback within '500' ms ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+Sending feature_model/key_detected to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 1240 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 15 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/door_release_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 5144 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 6762 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_fault to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 7573 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 11 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 11362 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_3 to model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 12174 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 1 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 13767 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 3 and type <class 'int'>
+Feedback received: 3
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 15178 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 3 and type <class 'int'>
+Sending feature_model/clock_val to model with value 15736 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 3 and type <class 'int'>
+
+]]>
+</system-out></testcase><testcase classname="scenario.locking_feedback.Locking Feedback" name="Failure feedback when trying to lock the vehicle with one door open -- @1.4 " status="passed" time="10.579317"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario Outline: Failure feedback when trying to lock the vehicle with one door open -- @1.4 
+    Given I do not have an authenticated key with me ... passed in 0.327s
+    And my vehicle is 'locked' with no release buttons pressed ... passed in 3.266s
+    And all doors are 'closed' ... passed in 1.072s
+    And the locking system is 'operational' ... passed in 0.289s
+    Given the door 4 is 'unlocked' ... passed in 3.247s
+    And the door 4 is open ... passed in 0.272s
+    When I press the 'lock' button ... passed in 1.032s
+    Then all doors should be 'locked' ... passed in 1.074s
+    And I should receive a operation failed feedback within '500' ms ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+Sending feature_model/key_detected to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 1274 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 15 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/door_release_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 5194 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 6819 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_fault to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 7655 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 7 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 11448 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_4 to model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 12279 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 1 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 13869 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 6 and type <class 'int'>
+Feedback received: 6
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 15295 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 6 and type <class 'int'>
+Sending feature_model/clock_val to model with value 15850 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 6 and type <class 'int'>
+
+]]>
+</system-out></testcase><testcase classname="scenario.locking_feedback.Locking Feedback" name="Failure feedback when trying to lock the vehicle with one door open -- @1.5 " status="passed" time="10.633193"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario Outline: Failure feedback when trying to lock the vehicle with one door open -- @1.5 
+    Given I do not have an authenticated key with me ... passed in 0.355s
+    And my vehicle is 'locked' with no release buttons pressed ... passed in 3.322s
+    And all doors are 'closed' ... passed in 1.082s
+    And the locking system is 'operational' ... passed in 0.272s
+    Given the door 1 is 'unlocked' ... passed in 3.213s
+    And the door 1 is closed ... passed in 0.263s
+    When I press the 'lock' button ... passed in 1.042s
+    Then all doors should be 'locked' ... passed in 1.085s
+    And I should receive a locking confirmation feedback within '500' ms ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+Sending feature_model/key_detected to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 1265 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 15 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/door_release_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 5250 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 6884 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_fault to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 7693 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 14 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 11448 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_1 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 12257 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 1 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 13855 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 7 and type <class 'int'>
+Feedback received: 7
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 15292 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 7 and type <class 'int'>
+Sending feature_model/clock_val to model with value 15844 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 7 and type <class 'int'>
+
+]]>
+</system-out></testcase><testcase classname="scenario.locking_feedback.Locking Feedback" name="Failure feedback when trying to lock the vehicle with one door open -- @1.6 " status="passed" time="10.613395"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario Outline: Failure feedback when trying to lock the vehicle with one door open -- @1.6 
+    Given I do not have an authenticated key with me ... passed in 0.373s
+    And my vehicle is 'locked' with no release buttons pressed ... passed in 3.279s
+    And all doors are 'closed' ... passed in 1.098s
+    And the locking system is 'operational' ... passed in 0.288s
+    Given the door 2 is 'unlocked' ... passed in 3.215s
+    And the door 2 is closed ... passed in 0.269s
+    When I press the 'lock' button ... passed in 1.023s
+    Then all doors should be 'locked' ... passed in 1.068s
+    And I should receive a locking confirmation feedback within '500' ms ... passed in 0.001s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+Sending feature_model/key_detected to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 1308 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 15 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/door_release_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 5315 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 6972 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_fault to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 7797 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 13 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 11549 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_2 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 12371 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 1 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 13965 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 7 and type <class 'int'>
+Feedback received: 7
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 15379 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 7 and type <class 'int'>
+Sending feature_model/clock_val to model with value 15936 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 7 and type <class 'int'>
+
+]]>
+</system-out></testcase><testcase classname="scenario.locking_feedback.Locking Feedback" name="Failure feedback when trying to lock the vehicle with one door open -- @1.7 " status="passed" time="10.583792"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario Outline: Failure feedback when trying to lock the vehicle with one door open -- @1.7 
+    Given I do not have an authenticated key with me ... passed in 0.356s
+    And my vehicle is 'locked' with no release buttons pressed ... passed in 3.276s
+    And all doors are 'closed' ... passed in 1.089s
+    And the locking system is 'operational' ... passed in 0.273s
+    Given the door 3 is 'unlocked' ... passed in 3.210s
+    And the door 3 is closed ... passed in 0.269s
+    When I press the 'lock' button ... passed in 1.032s
+    Then all doors should be 'locked' ... passed in 1.077s
+    And I should receive a locking confirmation feedback within '500' ms ... passed in 0.001s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+Sending feature_model/key_detected to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 1277 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 15 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/door_release_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 5207 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 6840 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_fault to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 7659 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 11 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 11408 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_3 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 12238 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 1 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 13825 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 7 and type <class 'int'>
+Feedback received: 7
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 15241 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 7 and type <class 'int'>
+Sending feature_model/clock_val to model with value 15811 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 7 and type <class 'int'>
+
+]]>
+</system-out></testcase><testcase classname="scenario.locking_feedback.Locking Feedback" name="Failure feedback when trying to lock the vehicle with one door open -- @1.8 " status="passed" time="10.544231"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario Outline: Failure feedback when trying to lock the vehicle with one door open -- @1.8 
+    Given I do not have an authenticated key with me ... passed in 0.338s
+    And my vehicle is 'locked' with no release buttons pressed ... passed in 3.255s
+    And all doors are 'closed' ... passed in 1.071s
+    And the locking system is 'operational' ... passed in 0.269s
+    Given the door 4 is 'unlocked' ... passed in 3.257s
+    And the door 4 is closed ... passed in 0.257s
+    When I press the 'lock' button ... passed in 1.027s
+    Then all doors should be 'locked' ... passed in 1.071s
+    And I should receive a locking confirmation feedback within '500' ms ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+Sending feature_model/key_detected to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 1310 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 15 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/door_release_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 5217 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 6852 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_fault to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 7660 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 7 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 11469 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 12268 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 1 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 13867 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 7 and type <class 'int'>
+Feedback received: 7
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 15291 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 7 and type <class 'int'>
+Sending feature_model/clock_val to model with value 15853 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 7 and type <class 'int'>
+
+]]>
+</system-out></testcase><testcase classname="scenario.locking_feedback.Locking Feedback" name="Failure feedback when the vehicle failed to lock or unlock the doors -- @1.1 " status="passed" time="9.422639"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario Outline: Failure feedback when the vehicle failed to lock or unlock the doors -- @1.1 
+    Given I do not have an authenticated key with me ... passed in 0.338s
+    And my vehicle is 'locked' with no release buttons pressed ... passed in 3.239s
+    And all doors are 'closed' ... passed in 1.070s
+    And the locking system is 'operational' ... passed in 0.274s
+    Given all doors are locked ... passed in 2.151s
+    And the locking system is 'faulted' ... passed in 0.268s
+    When I press the unlock button ... passed in 1.011s
+    Then all doors should be locked ... passed in 1.070s
+    And I should receive a operation failed feedback within '500' ms ... passed in 0.001s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+Sending feature_model/key_detected to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 1275 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 15 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/door_release_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 5156 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 6781 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_fault to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 7592 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 15 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 10288 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_fault to model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 11115 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/unlock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/unlock_all_button to model with value 1 and type <class 'int'>
+Sending feature_model/unlock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 12662 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 3 and type <class 'int'>
+Feedback received: 3
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 14070 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 3 and type <class 'int'>
+Sending feature_model/clock_val to model with value 14613 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 3 and type <class 'int'>
+
+]]>
+</system-out></testcase><testcase classname="scenario.locking_feedback.Locking Feedback" name="Failure feedback when the vehicle failed to lock or unlock the doors -- @1.2 " status="passed" time="9.446855"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario Outline: Failure feedback when the vehicle failed to lock or unlock the doors -- @1.2 
+    Given I do not have an authenticated key with me ... passed in 0.369s
+    And my vehicle is 'locked' with no release buttons pressed ... passed in 3.231s
+    And all doors are 'closed' ... passed in 1.068s
+    And the locking system is 'operational' ... passed in 0.258s
+    Given all doors are unlocked ... passed in 2.157s
+    And the locking system is 'faulted' ... passed in 0.277s
+    When I press the unlock button ... passed in 1.014s
+    Then all doors should be unlocked ... passed in 1.070s
+    And I should receive a unlocking confirmation feedback within '500' ms ... passed in 0.002s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+Sending feature_model/key_detected to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 1299 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 15 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/door_release_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 5176 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 6792 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_fault to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 7601 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 10316 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_fault to model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 11131 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/unlock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/unlock_all_button to model with value 1 and type <class 'int'>
+Sending feature_model/unlock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 12688 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 8 and type <class 'int'>
+Feedback received: 8
+Getting feature_model/door_lock_state_1 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 14115 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 8 and type <class 'int'>
+Sending feature_model/clock_val to model with value 14655 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 8 and type <class 'int'>
+
+]]>
+</system-out></testcase><testcase classname="scenario.locking_feedback.Locking Feedback" name="Failure feedback when the vehicle failed to lock or unlock the doors -- @1.3 " status="passed" time="9.610888"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario Outline: Failure feedback when the vehicle failed to lock or unlock the doors -- @1.3 
+    Given I do not have an authenticated key with me ... passed in 0.351s
+    And my vehicle is 'locked' with no release buttons pressed ... passed in 3.324s
+    And all doors are 'closed' ... passed in 1.093s
+    And the locking system is 'operational' ... passed in 0.273s
+    Given all doors are locked ... passed in 2.176s
+    And the locking system is 'faulted' ... passed in 0.270s
+    When I press the lock button ... passed in 1.034s
+    Then all doors should be locked ... passed in 1.088s
+    And I should receive a locking confirmation feedback within '500' ms ... passed in 0.001s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+Sending feature_model/key_detected to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 1271 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 15 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/door_release_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 5249 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 6886 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_fault to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 7710 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 15 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 10419 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_fault to model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 11228 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 1 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 12813 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 7 and type <class 'int'>
+Feedback received: 7
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 14247 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 7 and type <class 'int'>
+Sending feature_model/clock_val to model with value 14807 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 7 and type <class 'int'>
+
+]]>
+</system-out></testcase><testcase classname="scenario.locking_feedback.Locking Feedback" name="Failure feedback when the vehicle failed to lock or unlock the doors -- @1.4 " status="passed" time="9.46527"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario Outline: Failure feedback when the vehicle failed to lock or unlock the doors -- @1.4 
+    Given I do not have an authenticated key with me ... passed in 0.335s
+    And my vehicle is 'locked' with no release buttons pressed ... passed in 3.237s
+    And all doors are 'closed' ... passed in 1.088s
+    And the locking system is 'operational' ... passed in 0.272s
+    Given all doors are unlocked ... passed in 2.174s
+    And the locking system is 'faulted' ... passed in 0.264s
+    When I press the lock button ... passed in 1.009s
+    Then all doors should be unlocked ... passed in 1.085s
+    And I should receive a operation failed feedback within '500' ms ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+Sending feature_model/key_detected to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 1256 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 15 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 1 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 1 and type <class 'int'>
+Sending feature_model/door_release_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_release_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 5140 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/door_open_1 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_2 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_3 to model with value 0 and type <class 'int'>
+Sending feature_model/door_open_4 to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 6775 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_fault to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 7589 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 1 and type <class 'int'>
+Sending feature_model/manual_lock_rqst to model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_1 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 10304 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_fault to model with value 1 and type <class 'int'>
+Sending feature_model/clock_val to model with value 11119 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 1 and type <class 'int'>
+Sending feature_model/lock_all_button to model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 12674 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 3 and type <class 'int'>
+Feedback received: 3
+Getting feature_model/door_lock_state_1 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_2 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_3 from model with value 0 and type <class 'int'>
+Getting feature_model/door_lock_state_4 from model with value 0 and type <class 'int'>
+Sending feature_model/clock_val to model with value 14082 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 3 and type <class 'int'>
+Sending feature_model/clock_val to model with value 14636 and type <class 'int'>
+Getting feature_model/locking_feedback from model with value 3 and type <class 'int'>
+
+]]>
+</system-out></testcase></testsuite>

@@ -4,6 +4,7 @@ Feature: Unlock all
     Background:
         Given I do not have an authenticated key with me
         And my vehicle is 'locked' with no release buttons pressed
+        And all doors are 'closed'
 
     Scenario Outline: Unlocking all doors
         Given the door '1' is <door_1_state>
@@ -11,7 +12,7 @@ Feature: Unlock all
         And the door '3' is <door_3_state>
         And the door '4' is <door_4_state>
 
-        When I press the 'unlock' button
+        When I press the vehicle 'unlock' button
         Then all doors should be 'unlocked'
 
         Examples:
@@ -35,7 +36,7 @@ Feature: Unlock all
 
     Scenario Outline: Door can be released when unlocked
         Given the door <door_id> is 'unlocked'
-        When I 'hold' the door <door_id> release button
+        When I 'press' the door <door_id> release button
         Then the door <door_id> should be 'released'
 
         Examples:
