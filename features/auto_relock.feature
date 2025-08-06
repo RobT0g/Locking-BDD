@@ -30,8 +30,8 @@ Feature: Auto relocking
     Scenario Outline: Not auto relocking if release button is pressed
         Given all doors are 'locked'
         And the vehicle 'unlock' button has been 'pressed'
-        And the door <door_id> release button is 'released'
-        And the door <door_id> release button is 'pressed'
+        And the release button on door <door_id> is 'released'
+        And the release button on door <door_id> is 'pressed'
 
         When I wait '16' seconds
 

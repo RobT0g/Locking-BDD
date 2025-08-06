@@ -138,7 +138,7 @@ def step_when_i_press_the_operation_button(context:any, operation:str):
     context.model.write_to_model(f'{operation}_all_button', 0)
     time.sleep(0.2)
 
-@given('the door {door_id} release button is {button_state}')
+@given('the release button on door {door_id} is {button_state}')
 @when('I {button_state} the door {door_id} release button')
 def step_when_i_press_the_door_release_button(context:any, button_state:str, door_id:str):
     button_state = button_state.replace("'", "").replace('"', '')
