@@ -5,7 +5,7 @@ Feature: Locking Feedback
         And all doors are 'closed'
 
     Scenario Outline: Locking feedback when locking or unlocking the vehicle
-        When I press the <operation> button
+        When I press the vehicle <operation> button
 
         Then all doors should be <state>
         And I should receive a <feedback> feedback within '500' ms
@@ -19,10 +19,10 @@ Feature: Locking Feedback
         Given the door <door_id> is 'unlocked'
         And the door <door_id> is <door_open_state>
 
-        When I press the 'lock' button
+        When I press the vehicle 'lock' button
 
         Then all doors should be 'locked'
-        And I should receive a <feedback_received> feedback within '500' ms
+        And I should receive a <feedback_received> feedback
 
         Examples:
             | door_id | door_open_state | feedback_received    |

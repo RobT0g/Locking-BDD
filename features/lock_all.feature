@@ -12,7 +12,7 @@ Feature: Lock all
         And the door '3' is <door_3_state>
         And the door '4' is <door_4_state>
 
-        When I press the 'lock' button
+        When I press the vehicle 'lock' button
         Then all doors should be 'locked'
 
         Examples:
@@ -36,7 +36,7 @@ Feature: Lock all
 
 Scenario Outline: Door cannot be released when locked
     Given the door <door_id> is 'locked'
-    When I 'hold' the door <door_id> release button
+    When I 'press' the door <door_id> release button
     Then the door <door_id> should be 'held'
 
     Examples:

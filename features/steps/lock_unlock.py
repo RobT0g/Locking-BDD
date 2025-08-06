@@ -134,7 +134,7 @@ def step_given_there_is_a_failure_in_the_locking_system(context:any, fault_state
     else:
         raise ValueError('fault_state must be either faulted or operational')
 
-@when('I press the {operation} button')
+@when('I press the vehicle {operation} button')
 def step_when_i_press_the_operation_button(context:any, operation:str):
     operation = operation.replace("'", "").replace('"', '')
 
@@ -155,7 +155,7 @@ def step_when_i_press_the_door_release_button(context:any, button_state:str, doo
     button_state = button_state.replace("'", "").replace('"', '')
     door_id = int(door_id.replace("'", "").replace('"', ''))
 
-    if button_state == 'hold':
+    if button_state == 'press':
         context.model.write_to_model(f'door_release_{door_id}', 1)
 
     elif button_state == 'release':
