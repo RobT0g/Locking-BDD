@@ -21,12 +21,13 @@ Feature: Auto relocking
             | locked        | 16        | locked         |
             | unlocked      | 16        | unlocked       |
 
-    Scenario Outline: Not auto relocking if one door is unlocked
-        Given  all doors are 'closed'
-        And the door <door_id> is 'unlocked'
+    Scenario Outline: Not auto relocking if release button is pressed
+        Given all doors are 'locked'
 
         When I press the vehicle 'unlock' button
         And all doors get 'unlocked'
+        And I 'press' the door <door_id> release button
+        And I 'release' the door <door_id> release button
         And I wait '16' seconds
 
         Then all doors should be 'unlocked'
@@ -38,13 +39,12 @@ Feature: Auto relocking
             | 3       |
             | 4       |
 
-    Scenario Outline: Not auto relocking if release button is pressed
-        Given all doors are 'locked'
+    Scenario Outline: Not auto relocking if one door is unlocked
+        Given  all doors are 'closed'
+        And the door <door_id> is 'unlocked'
 
         When I press the vehicle 'unlock' button
         And all doors get 'unlocked'
-        And I 'press' the door <door_id> release button
-        And I 'release' the door <door_id> release button
         And I wait '16' seconds
 
         Then all doors should be 'unlocked'

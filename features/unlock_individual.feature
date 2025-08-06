@@ -22,7 +22,7 @@ Feature: Unlock individual door
             | 3       |
             | 4       |
 
-    Scenario Outline: Unlocking multiple single doors when I have the key
+    Scenario Outline: Unlocking multiple single doors when I have the key   
         Given all doors are 'locked'
         And I have an authenticated key with me
 
@@ -53,7 +53,7 @@ Feature: Unlock individual door
         Given the door <door_id> is 'locked'
         And I have an authenticated key with me
 
-        When I 'hold' the door <door_id> release button
+        When I 'press' the door <door_id> release button
         And I wait '1' seconds
         And I 'release' the door <door_id> release button
 
