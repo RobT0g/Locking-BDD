@@ -219,10 +219,10 @@ def step_then_i_should_receive_feedback(context:any, feedback_type:str, timeout:
     else:
         assert False, f'Unknown feedback type: {feedback_type}'
 
-    start_time = context.model.get_elapsed_time_ms()
+    start_time = int(time.time()*1000)
     condition_met = False
 
-    while (context.model.get_elapsed_time_ms() - start_time) < timeout:
+    while (int(time.time()*1000) - start_time) < timeout:
         if context.model.scenario_feedback_transitions[-1] == feedback_type:
             condition_met = True
             break
