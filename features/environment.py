@@ -10,7 +10,7 @@ class ModelManager:
         self.model_name = self.eng.eval('base','model')
         print(f'> Testing model: {self.model_name}')
 
-        self.start_time = time.time()
+        self.start_time = int(time.time() * 1000)
         self.scenario_feedback_count = 0
         self.scenario_feedback_transitions = []
         self.last_feedback = None
@@ -38,6 +38,8 @@ class ModelManager:
             payload (int): The value to send to the model.
         '''
 
+        start = self.get_elapsed_time_ms()
+
         if model_name is None:
             model_name = self.model_name
         
@@ -45,6 +47,8 @@ class ModelManager:
 
         print(f"Sending {model_name}/{var_name} to model with value {payload} and type {type(payload)}")
         self.eng.write_to_model(f'{model_name}/{var_name}', payload, 'Value', nargout=0)
+
+        self.start_time += (self.get_elapsed_time_ms() - start)
 
     def read_from_model(self, var_name:str, model_name:str=None) -> str:
         '''
@@ -55,6 +59,8 @@ class ModelManager:
             str: The value of the variable in the model.
         '''
 
+        start = self.get_elapsed_time_ms()
+
         if model_name is None:
             model_name = self.model_name
         
@@ -62,6 +68,8 @@ class ModelManager:
 
         value = self.eng.read_from_model(f'{model_name}/{var_name}', nargout=1)
         print(f"Getting {model_name}/{var_name} from model with value {value} and type {type(value)}")
+
+        self.start_time += (self.get_elapsed_time_ms() - start)
         return value
 
     def get_elapsed_time_ms(self) -> int:
@@ -69,7 +77,7 @@ class ModelManager:
         Returns the time elapsed since the ModelManager was instantiated, in milliseconds.
         """
 
-        elapsed_time = (time.time() - self.start_time) * 1000  # Convert seconds to milliseconds
+        elapsed_time = int(time.time() * 1000) - self.start_time
         return int(elapsed_time)
     
     def update_model_time(self):
@@ -84,7 +92,7 @@ class ModelManager:
         Resets the simulation time.
         """
 
-        self.start_time = time.time()
+        self.start_time = int(time.time() * 1000)
         self.write_to_model('clock_val', 0)
 
     def reset_simulation_feedback(self):
@@ -135,6 +143,14 @@ def before_scenario(context, scenario):
     context.model.reset_simulation()
     context.model.reset_simulation_time()
     context.model.reset_simulation_feedback()
+
+def before_step(context, step):
+    '''
+    Runs after each step
+    '''
+
+    context.model.update_model_time()
+    context.model.update_feedback()
 
 def after_step(context, step):
     '''
