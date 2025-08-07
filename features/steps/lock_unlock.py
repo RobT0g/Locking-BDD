@@ -130,24 +130,21 @@ def step_when_i_press_the_operation_button(context:any, operation:str):
         raise ValueError('operation must be either lock or unlock')
 
     context.model.write_to_model(f'{operation}_all_button', 0)
-    time.sleep(0.2)
+    time.sleep(0.1)
 
     context.model.write_to_model(f'{operation}_all_button', 1)
-    time.sleep(0.2)
+    time.sleep(0.1)
 
-    context.model.write_to_model(f'{operation}_all_button', 0)
-    time.sleep(0.2)
-
-@given('the door {door_id} release button is {button_state}')
+@given('the release button on door {door_id} is {button_state}')
 @when('I {button_state} the door {door_id} release button')
 def step_when_i_press_the_door_release_button(context:any, button_state:str, door_id:str):
     button_state = button_state.replace("'", "").replace('"', '')
     door_id = int(door_id.replace("'", "").replace('"', ''))
 
-    if button_state == 'press':
+    if button_state in ['press', 'pressed']:
         context.model.write_to_model(f'door_release_{door_id}', 1)
 
-    elif button_state == 'release':
+    elif button_state in ['release', 'released']:
         context.model.write_to_model(f'door_release_{door_id}', 0)
 
     else:
@@ -222,10 +219,10 @@ def step_then_i_should_receive_feedback(context:any, feedback_type:str, timeout:
     else:
         assert False, f'Unknown feedback type: {feedback_type}'
 
-    start_time = context.model.get_elapsed_time_ms()
+    start_time = int(time.time()*1000)
     condition_met = False
 
-    while (context.model.get_elapsed_time_ms() - start_time) < timeout:
+    while (int(time.time()*1000) - start_time) < timeout:
         if context.model.scenario_feedback_transitions[-1] == feedback_type:
             condition_met = True
             break

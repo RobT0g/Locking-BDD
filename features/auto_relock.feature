@@ -8,7 +8,7 @@ Feature: Auto relocking
 
     Scenario Outline: Auto relocking
         Given all doors are <initial_state>
-        And the vehicle 'unlock' button has been 'pressed'
+        And the vehicle 'unlock' button has been pressed
 
         When I wait <wait_time> seconds
 
@@ -29,11 +29,11 @@ Feature: Auto relocking
 
     Scenario Outline: Not auto relocking if release button is pressed
         Given all doors are 'locked'
-        And the vehicle 'unlock' button has been 'pressed'
-        And the door <door_id> release button is 'released'
-        And the door <door_id> release button is 'pressed'
+        And the vehicle 'unlock' button has been pressed
+        And the release button on door <door_id> is 'released'
+        And the release button on door <door_id> is 'pressed'
 
-        When I wait '16' seconds
+        When I wait '15' seconds
 
         Then all doors should be 'unlocked'
 
@@ -47,9 +47,9 @@ Feature: Auto relocking
     Scenario Outline: Not auto relocking if one door is unlocked
         Given  all doors are 'closed'
         And the door <door_id> is 'unlocked'
-        And the vehicle 'unlock' button has been 'pressed'
+        And the vehicle 'unlock' button has been pressed
 
-        When I wait '16' seconds
+        When I wait '15' seconds
 
         Then all doors should be 'unlocked'
 
@@ -62,9 +62,9 @@ Feature: Auto relocking
 
     Scenario: Not auto relocking if unlock button is pressed twice
         Given all doors are 'locked'
-        And the vehicle 'unlock' button has been 'pressed'
-        And the vehicle 'unlock' button has been 'pressed'
+        And the vehicle 'unlock' button has been pressed
+        And the vehicle 'unlock' button has been pressed
 
-        When I wait '16' seconds
+        When I wait '15' seconds
 
         Then all doors should be 'unlocked'

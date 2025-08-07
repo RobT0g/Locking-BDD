@@ -22,7 +22,7 @@ Feature: Locking Feedback
         When I press the vehicle 'lock' button
 
         Then all doors should be 'locked'
-        And I should receive a <feedback_received> feedback
+        And I should receive a <feedback_received> feedback within '500' ms
 
         Examples:
             | door_id | door_open_state | feedback_received    |
