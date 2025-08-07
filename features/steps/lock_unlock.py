@@ -129,11 +129,11 @@ def step_when_i_press_the_operation_button(context:any, operation:str):
     if operation not in ['lock', 'unlock']:
         raise ValueError('operation must be either lock or unlock')
 
-    context.model.write_to_model(f'{operation}_all_button', 1)
-    time.sleep(0.05)
-
     context.model.write_to_model(f'{operation}_all_button', 0)
-    time.sleep(0.05)
+    time.sleep(0.1)
+
+    context.model.write_to_model(f'{operation}_all_button', 1)
+    time.sleep(0.1)
 
 @given('the release button on door {door_id} is {button_state}')
 @when('I {button_state} the door {door_id} release button')
@@ -141,10 +141,10 @@ def step_when_i_press_the_door_release_button(context:any, button_state:str, doo
     button_state = button_state.replace("'", "").replace('"', '')
     door_id = int(door_id.replace("'", "").replace('"', ''))
 
-    if button_state == 'press':
+    if button_state in ['press', 'pressed']:
         context.model.write_to_model(f'door_release_{door_id}', 1)
 
-    elif button_state == 'release':
+    elif button_state in ['release', 'released']:
         context.model.write_to_model(f'door_release_{door_id}', 0)
 
     else:

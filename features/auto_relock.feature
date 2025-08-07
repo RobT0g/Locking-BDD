@@ -31,9 +31,9 @@ Feature: Auto relocking
         Given all doors are 'locked'
         And the vehicle 'unlock' button has been pressed
         And the release button on door <door_id> is 'released'
-        And the release button on door <door_id> is pressed
+        And the release button on door <door_id> is 'pressed'
 
-        When I wait '16' seconds
+        When I wait '15' seconds
 
         Then all doors should be 'unlocked'
 
@@ -49,7 +49,7 @@ Feature: Auto relocking
         And the door <door_id> is 'unlocked'
         And the vehicle 'unlock' button has been pressed
 
-        When I wait '16' seconds
+        When I wait '15' seconds
 
         Then all doors should be 'unlocked'
 
@@ -65,6 +65,6 @@ Feature: Auto relocking
         And the vehicle 'unlock' button has been pressed
         And the vehicle 'unlock' button has been pressed
 
-        When I wait '16' seconds
+        When I wait '15' seconds
 
         Then all doors should be 'unlocked'
