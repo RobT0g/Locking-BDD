@@ -53,7 +53,7 @@ Feature: Auto relocking
 
         When I wait '15' seconds
 
-        Then the all doors should be <final_state>
+        Then all doors should be <final_state>
 
         Examples:
             | door_1_state | door_2_state | door_3_state | door_4_state | final_state |
