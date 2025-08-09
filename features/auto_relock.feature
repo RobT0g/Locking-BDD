@@ -44,21 +44,35 @@ Feature: Auto relocking
             | 3       |
             | 4       |
 
-    Scenario Outline: Not auto relocking if one door is unlocked
-        Given  all doors are 'closed'
-        And the door <door_id> is 'unlocked'
+    Scenario Outline: Not auto relocking if one or more doors are unlocked
+        Given the door '1' is <door_1_state>
+        And the door '2' is <door_2_state>
+        And the door '3' is <door_3_state>
+        And the door '4' is <door_4_state>
         And the vehicle 'unlock' button has been pressed
 
         When I wait '15' seconds
 
-        Then all doors should be 'unlocked'
+        Then the all doors should be <final_state>
 
         Examples:
-            | door_id |
-            | 1       |
-            | 2       |
-            | 3       |
-            | 4       |
+            | door_1_state | door_2_state | door_3_state | door_4_state | final_state |
+            | unlocked     | unlocked     | unlocked     | unlocked     | unlocked    |
+            | unlocked     | unlocked     | unlocked     | locked       | unlocked    |
+            | unlocked     | unlocked     | locked       | unlocked     | unlocked    |
+            | unlocked     | unlocked     | locked       | locked       | unlocked    |
+            | unlocked     | locked       | unlocked     | unlocked     | unlocked    |
+            | unlocked     | locked       | unlocked     | locked       | unlocked    |
+            | unlocked     | locked       | locked       | unlocked     | unlocked    |
+            | unlocked     | locked       | locked       | locked       | unlocked    |
+            | locked       | unlocked     | unlocked     | unlocked     | unlocked    |
+            | locked       | unlocked     | unlocked     | locked       | unlocked    |
+            | locked       | unlocked     | locked       | unlocked     | unlocked    |
+            | locked       | unlocked     | locked       | locked       | unlocked    |
+            | locked       | locked       | unlocked     | unlocked     | unlocked    |
+            | locked       | locked       | unlocked     | locked       | unlocked    |
+            | locked       | locked       | locked       | unlocked     | unlocked    |
+            | locked       | locked       | locked       | locked       | locked      |
 
     Scenario: Not auto relocking if unlock button is pressed twice
         Given all doors are 'locked'
