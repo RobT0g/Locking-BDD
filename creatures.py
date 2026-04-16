@@ -14,20 +14,22 @@ class Alele_List:
     RETALIATION:int = 0
     FEAR:int = 0
 
-    def __init__(self, number_of_aleles:int, baseline_val:int):
-        number_of_attr = len(vars(self).items())
-        print(number_of_attr)
-        distribution = self.distribute_integer(number_of_aleles, number_of_attr)
-        
-        for ind, key in enumerate(vars(self).keys()):
-            setattr(self, key, distribution[ind]+baseline_val)
+def distribute_integer(total, n) -> list:
+    cuts = sorted(random.sample(range(total + 1), n - 1))
+    cuts = [0] + cuts + [total]
+    
+    return [cuts[i+1] - cuts[i] for i in range(n)]
 
+def generate_random_alele(number_of_aleles:int, baseline_val:int) -> Alele_List:
+    alele = Alele_List()
 
-    def distribute_integer(total, n):
-        cuts = sorted(random.sample(range(total + 1), n - 1))
-        cuts = [0] + cuts + [total]
-        
-        return [cuts[i+1] - cuts[i] for i in range(n)]
+    number_of_attr = len(vars(alele).items())
+    distribution = distribute_integer(number_of_aleles, number_of_attr)
+    
+    for ind, key in enumerate(vars(alele).keys()):
+        setattr(alele, key, distribution[ind]+baseline_val)
+    
+    return alele
 
 class Creature:
     baseline_number_of_aleles:int = 40
@@ -36,13 +38,10 @@ class Creature:
 
     def __init__(self):
         self.number_of_aleles = self.baseline_number_of_aleles + random.randint(0, self.max_random_aleles)
-        self.aleles = Alele_List(self.number_of_aleles, self.baseline_alele_val)
-
-    
-
+        self.alele = generate_random_alele(self.number_of_aleles, self.baseline_alele_val)
 
     
 if __name__ == '__main__':
     sample_creature = Creature()
-    for attr, val in vars(sample_creature.aleles).items():
+    for attr, val in vars(sample_creature.alele).items():
         print(f'{attr} -> {val}')
