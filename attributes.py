@@ -9,5 +9,9 @@ class AttributeList:
         DRAG    = 1
     )
 
+    aggression: Alele_List = Alele_List(
+        
+    )
+
 
 

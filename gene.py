@@ -7,6 +7,9 @@ class Gene:
         else:
             self.aleles = aleles
 
+        self.energy = 0
+        
+
     def get_weighted_calc(self, weight_to_calc:Alele_List):
         total = 0
         
