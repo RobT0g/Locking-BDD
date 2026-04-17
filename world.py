@@ -12,7 +12,7 @@ class World:
     number_of_creatures = 20
     creatures:list[Creature] = [Creature.generate_random_creature() for i in range(number_of_creatures)]
     list_of_creatures:list[Creature] = creatures.copy()
-    lineage:ItemTree = []
+    lineage:ItemTree
     action_manager:Actions = Actions()
     world_report = ''
 
@@ -52,7 +52,6 @@ class World:
         else:
             # Neither wants to fight
             pass
-
 
     def iterate(self, iteration_number:int, report:bool=False):
         next_gen = []
