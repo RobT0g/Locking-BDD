@@ -16,7 +16,7 @@ class Actions:
             attribute_cal = getattr(self, attribute)
             
             for cel in attribute_cal:
-                result += getattr(creatures[cel[0]].alele, cel[1])*cel[2]
+                result += creatures[cel[0]].genes[cel[1]]*cel[2]
 
         except: print('INCORRECT ATTRIBUTE NAME')
 
@@ -30,7 +30,7 @@ class Actions:
 
     def get_number_of_hits_to_kill(self, creatures:list[Creature]) -> int:
         damage = self.get_attribute_total(creatures, 'damage')
-        return math.ceil(getattr(creatures[1].genes, 'HEALTH')/damage)
+        return math.ceil(creatures[1].genes['HEALTH']/damage)
     
     def get_both_hits_to_kill(self, creatures:list[Creature]) -> list[int]:
         return [self.get_number_of_hits_to_kill(creatures), self.get_number_of_hits_to_kill([creatures[1], creatures[0]])]
