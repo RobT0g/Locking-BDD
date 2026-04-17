@@ -32,7 +32,7 @@ sample_creatures = [ Creature() for i in range(len(sample_aleles))]
 for ind, alele_set in enumerate(sample_aleles):
     for alele_ind, a in enumerate(alele_set):
         #print(f'Setting {ind} {list_of_aleles[alele_ind]} to {a}')
-        sample_creatures[ind].alele.set_alele_by_index(alele_ind, a, False)
+        sample_creatures[ind].genes.set_alele_by_index(alele_ind, a, False)
     
     #print(sample_creatures[ind].alele)
     
@@ -51,7 +51,7 @@ sample_world.lineage.set_root('BASE')
 
 for c in sample_world.creatures:
     sample_world.lineage.add_new_item(c, 'BASE')
-    print(c.alele)
+    print(c.genes)
 
 
 @pytest.mark.parametrize('sample_world', [sample_world])

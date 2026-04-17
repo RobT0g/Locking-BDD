@@ -5,7 +5,7 @@ import random
 import math
 
 from tree import *
-from alele_list import *
+from gene import *
 from creature import *
 from actions import *
 
@@ -95,8 +95,8 @@ class World:
             headers[1] = 'Player'
             headers[2] = 'Player'
         
-        for attr in players[0].alele.get_list_of_aleles():
-            data.append((attr, getattr(players[0].alele, attr), getattr(players[1].alele, attr)))
+        for attr in players[0].genes.get_list_of_aleles():
+            data.append((attr, getattr(players[0].genes, attr), getattr(players[1].genes, attr)))
         
         report = tabulate(data, headers=headers, tablefmt="grid")
         return report

@@ -30,7 +30,7 @@ class Actions:
 
     def get_number_of_hits_to_kill(self, creatures:list[Creature]) -> int:
         damage = self.get_attribute_total(creatures, 'damage')
-        return math.ceil(getattr(creatures[1].alele, 'HEALTH')/damage)
+        return math.ceil(getattr(creatures[1].genes, 'HEALTH')/damage)
     
     def get_both_hits_to_kill(self, creatures:list[Creature]) -> list[int]:
         return [self.get_number_of_hits_to_kill(creatures), self.get_number_of_hits_to_kill([creatures[1], creatures[0]])]
