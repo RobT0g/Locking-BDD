@@ -12,12 +12,12 @@ class Creature:
     max_alele_loss = 4
     max_alele_gain = 4
     max_alele_change = 2
-
-    number_of_aleles:int = 0
-    alele:Alele_List=Alele_List()
+    number_of_aleles:int
+    alele:Alele_List
 
     def __init__(self):
-        pass
+        self.number_of_aleles = self.baseline_number_of_aleles
+        self.alele = Alele_List()
 
     def generate_random_creature() -> 'Creature':
         new_creature = Creature()

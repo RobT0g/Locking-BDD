@@ -1,23 +1,26 @@
+from tabulate import tabulate
+
 from dataclasses import dataclass, asdict
-from tree import *
 import random
 import math
+
+from tree import *
 from alele_list import *
 from creature import *
 from actions import *
-from tabulate import tabulate
 
 class World:
-    iterations:int = 20
-    number_of_creatures = 20
-    creatures:list[Creature] = [Creature.generate_random_creature() for i in range(number_of_creatures)]
-    list_of_creatures:list[Creature] = creatures.copy()
-    lineage:ItemTree
-    action_manager:Actions = Actions()
-    world_report = ''
-
     def __init__(self):
-        self.lineage = ItemTree()
+        self.iterations:            int = 20
+        self.number_of_creatures:   int = 20
+
+        self.creatures:             list[Creature] = [Creature.generate_random_creature() for i in range(self.number_of_creatures)]
+        self.list_of_creatures:     list[Creature] = self.creatures.copy()
+        
+        self.action_manager:        Actions = Actions()
+        self.world_report:          str = ''
+        self.lineage:               ItemTree = ItemTree()
+        
         self.lineage.set_root('BASE')
 
         for c in self.creatures:
@@ -36,6 +39,7 @@ class World:
         if all(engage_status):
             # Both want to fight
             hits_to_kill = self.action_manager.get_both_hits_to_kill(fighters)
+            print(hits_to_kill)
 
             if hits_to_kill[0] >= hits_to_kill[1]:
                 # Fighter 1 won
