@@ -14,6 +14,7 @@ class World:
     list_of_creatures:list[Creature] = creatures.copy()
     lineage:ItemTree = []
     action_manager:Actions = Actions()
+    world_report = ''
 
     def __init__(self):
         self.lineage = ItemTree()
@@ -25,7 +26,7 @@ class World:
     def calculate(self, creatures:list[Creature], attribute:str) -> list[int]:
         return self.action_manager.get_paired_attribute(creatures, attribute)
 
-    def fight(self, creature_ids:list[int]) -> tuple[bool, int]:
+    def fight(self, creature_ids:list[int]) -> tuple[bool, int, int]:
         fighters = [self.creatures[i] for i in creature_ids]
         
         # Will they fight?
@@ -38,11 +39,11 @@ class World:
 
             if hits_to_kill[0] >= hits_to_kill[1]:
                 # Fighter 1 won
-                return (True, creature_ids[0])
+                return (True, creature_ids[0], creature_ids[1])
 
             else:
                 # Fighter 2 won
-                return (True, creature_ids[1])
+                return (True, creature_ids[1], creature_ids[0])
 
         elif any(engage_status):
             # Only one of them want to fight
@@ -55,11 +56,15 @@ class World:
 
     def iterate(self, iteration_number:int, report:bool=False):
         next_gen = []
+        self.world_report += f'\n --- Current Iteration is {iteration_number} ---\n'
+
         for i in range(0, self.number_of_creatures, 2):
             result = self.fight([i, i+1])
+            current_report = self.report_fight(result[0], [self.creatures[result[1]], self.creatures[result[2]]])
+            self.world_report += current_report + '\n'
 
             if report:
-                self.report_fight(*self.fight)
+                print(current_report)
 
             if result[0]:
                 winner = self.creatures[result[1]]
@@ -80,7 +85,7 @@ class World:
 
         self.creatures = next_gen
 
-    def report_fight(self, won:bool, players:list[Creature]):
+    def report_fight(self, won:bool, players:list[Creature]) -> str:
         headers = ['Attribute', 'Winner', 'Loser']
         data = []
         if not won:
@@ -90,15 +95,18 @@ class World:
         for attr in players[0].alele.get_list_of_aleles():
             data.append((attr, getattr(players[0].alele, attr), getattr(players[1].alele, attr)))
         
-        print(tabulate(data, headers=headers, tablefmt="grid"))
+        report = tabulate(data, headers=headers, tablefmt="grid")
+        return report
 
     def execute(self):
         for i in range(self.iterations):
             random.shuffle(self.creatures)
             self.iterate(i, i == 0 or i == self.iterations-1)
+        
+        with open('report.txt', 'w') as file:
+            file.writelines(self.world_report)
 
 
 if __name__ == '__main__':
     w = World()
     w.execute()
-    

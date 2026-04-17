@@ -4,7 +4,7 @@ from creature import *
 
 @dataclass
 class Actions:
-    engage = [(0, 'WAR', 2), (0, 'PEACE', -1), (0, 'INTIMIDATION', -1)]
+    engage = [(0, 'WAR', 2), (0, 'PEACE', -1), (1, 'INTIMIDATION', -1)]
     engage_min = None
 
     damage = [(0, 'ATTACK', 1), (1, 'DEFENSE', -1)]
@@ -20,7 +20,7 @@ class Actions:
 
         except: print('INCORRECT ATTRIBUTE NAME')
 
-        if min_val:=getattr(self, attribute + '_min') is None:
+        if min_val:=getattr(self, attribute + '_min') is not None:
             if min_val > result: result = min_val
         
         return result

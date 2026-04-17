@@ -1,8 +1,17 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 behave==1.2.6
 parse==1.20.2
 parse-type==0.6.2
 six==1.17.0
 =======
+=======
+colorama==0.4.6
+iniconfig==2.3.0
+packaging==26.1
+pluggy==1.6.0
+Pygments==2.20.0
+pytest==9.0.3
+>>>>>>> 6d77778 (a)
 tabulate==0.10.0
 >>>>>>> 29c9126 (a)
