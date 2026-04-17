@@ -21,8 +21,22 @@ class Alele_List:
         for ind, key in enumerate(vars(self).keys()):
             setattr(self, key, distribution[ind]+baseline_increment)
     
-    def get_number_of_attributes(self) -> int:
+    def get_number_of_aleles(self) -> int:
         return len(vars(self).items())
+    
+    def get_list_of_aleles(self) -> list[str]:
+        return list(vars(self).keys())
+    
+    def get_alele_by_index(self, ind:int) -> int:
+        return getattr(self, self.get_list_of_aleles()[ind])
+
+    def set_alele_by_index(self, ind:int, value:int, increment:bool) -> None:
+        alele_to_change = self.get_list_of_aleles()[ind]
+
+        if increment:
+            value = getattr(self, alele_to_change) + value
+
+        setattr(self, alele_to_change, value)
 
 def distribute_integer(total, n) -> list:
     cuts = sorted(random.sample(range(total + 1), n - 1))
@@ -67,6 +81,10 @@ class Creature:
         number_of_attr = len(attributes)
         new_creature = Creature()
 
+        # Copy aleles
+        for ind in range(new_creature.alele.get_number_of_aleles()):
+            new_creature.alele.set_alele_by_index(ind, self.alele.get_alele_by_index(ind), False)
+
         # Gain or lose aleles
         alele_gain = random.randint(-self.max_alele_loss, self.max_alele_gain)
         if self.number_of_aleles + alele_gain < new_creature.baseline_number_of_aleles:
@@ -75,15 +93,15 @@ class Creature:
         new_creature.number_of_aleles = self.number_of_aleles + alele_gain
         for i in range(abs(alele_gain)):
             attr_changed = random.randint(0, number_of_attr-1)
-            setattr(new_creature.alele, attributes[attr_changed][0], getattr(new_creature.alele, attributes[attr_changed][0]) + (-1 if alele_gain< 0 else 1))
+            new_creature.alele.set_alele_by_index(attr_changed, 1 if alele_gain > 0 else -1, True)
 
         # Change aleles
         alele_change = random.randint(0, self.max_alele_change)
         for i in range(alele_change):
             swap = [random.randint(0, number_of_attr-1) for j in range(2)]
 
-            setattr(new_creature.alele, attributes[swap[0]][0], getattr(new_creature.alele, attributes[swap[0]][0])+1)
-            setattr(new_creature.alele, attributes[swap[1]][0], getattr(new_creature.alele, attributes[swap[1]][0])-1)
+            new_creature.alele.set_alele_by_index(swap[0], 1, True)
+            new_creature.alele.set_alele_by_index(swap[1], -1, True)
 
         return new_creature
 
@@ -96,6 +114,6 @@ if __name__ == '__main__':
     print('\n--------\n')
     new_creature:Creature = sample_creature.create_imperfect_copy()
     for attr, val in vars(new_creature.alele).items():
-        print(f'{attr} -> {val}')
+        print(f'{attr} \t -> {getattr(sample_creature.alele, attr)} \t{val}')
 
 
