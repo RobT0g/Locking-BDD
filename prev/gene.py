@@ -1,4 +1,4 @@
-from aleles import *
+from prev.aleles import *
 
 class Gene:
     def __init__(self, aleles:Alele_List):

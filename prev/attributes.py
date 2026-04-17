@@ -1,5 +1,5 @@
 from dataclasses import dataclass, asdict
-from aleles import *
+from prev.aleles import *
 
 @dataclass
 class AttributeList:
