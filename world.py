@@ -38,10 +38,11 @@ class World:
 
         if all(engage_status):
             # Both want to fight
+            damages = self.action_manager.get_paired_attribute(fighters, 'damage')
             hits_to_kill = self.action_manager.get_both_hits_to_kill(fighters)
             print(hits_to_kill)
 
-            if hits_to_kill[0] >= hits_to_kill[1]:
+            if hits_to_kill[0] <= hits_to_kill[1]:
                 # Fighter 1 won
                 return (True, creature_ids[0], creature_ids[1])
 
@@ -95,8 +96,8 @@ class World:
             headers[1] = 'Player'
             headers[2] = 'Player'
         
-        for attr in players[0].genes.get_list_of_aleles():
-            data.append((attr, getattr(players[0].genes, attr), getattr(players[1].genes, attr)))
+        for attr in gene_fields:
+            data.append((attr, players[0].genes[attr], players[1].genes[attr]))
         
         report = tabulate(data, headers=headers, tablefmt="grid")
         return report
