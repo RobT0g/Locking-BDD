@@ -15,8 +15,8 @@ from actions import *
 class World:
     def __init__(self, name:str):
         self.name = name
-        self.iterations:            int = 400
-        self.number_of_creatures:   int = 100
+        self.iterations:            int = 500
+        self.number_of_creatures:   int = 200
 
         self.creatures:             list[Creature] = [Creature.generate_random_creature() for i in range(self.number_of_creatures)]
         self.list_of_creatures:     list[Creature] = self.creatures.copy()
@@ -174,22 +174,29 @@ class World:
 
     def analyze_trends(self):
         attribute_trends = {}
+        avg_aleles = []
         for attr in gene_fields:
             attribute_trends[attr] = []
 
             for ind in range(len(self.generations)):
                 if ind%10 != 0:
                     continue
+                
+                avg_aleles.append(0)
 
                 gen = self.generations[ind]
+                print(gen[0].genes, gen[0].total_aleles)
                 avg_field_value = 0
 
                 for c in gen:
                     avg_field_value += c.genes[attr]
+                    avg_aleles[-1] += c.total_aleles
 
                 avg_field_value = (avg_field_value/len(gen))
+                avg_aleles[-1] = int(avg_aleles[-1]/len(gen))
                 attribute_trends[attr].append(avg_field_value)
-        
+
+        print(avg_aleles)
         with open("trends.json", "w") as final_file:
             json.dump(attribute_trends, final_file, indent=4)
         
@@ -219,6 +226,16 @@ class World:
 
         plt.legend()
         plt.savefig(f'results/{self.name}_strategies.png')
+        
+        plt.figure(3)
+        plt.plot(avg_aleles, label='Average Aleles', color='blue', linewidth=2)
+
+        plt.xlabel('Index/Time')
+        plt.ylabel('Value')
+        plt.title('Comparison of Multiple Data Series')
+
+        plt.legend()
+        plt.savefig(f'results/{self.name}_alelss.png')
 
 
 if __name__ == '__main__':
