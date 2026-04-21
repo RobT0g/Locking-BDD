@@ -5,13 +5,13 @@ import math
 from gene import *
 
 class Creature:
-    baseline_number_of_aleles:int = 50
+    baseline_number_of_aleles:int = 500
     baseline_alele_val:int = 5
 
-    max_random_aleles:int = 10
-    max_alele_loss = 4
-    max_alele_gain = 4
-    max_alele_change = 2
+    max_random_aleles:int = 100
+    max_alele_loss = 20
+    max_alele_gain = 20
+    max_alele_change = 30
 
     def __init__(self):
         self.total_aleles = self.baseline_number_of_aleles

@@ -10,6 +10,12 @@ class Actions:
     damage = [(0, 'ATTACK', 1), (1, 'DEFENSE', -1)]
     damage_min = 1
 
+    will_pursuit = [(0, 'PEACE', -1), (1, 'INTIMIDATION', -1), (0, 'PURSUIT', 2), (0, 'WAR', 1)]
+    will_pursuit_min = None
+
+    can_escape = [(0, 'SPEED', 1), (1, 'SPEED', -1)]
+    can_escape_min = None
+
     def get_attribute_total(self, creatures:list[Creature], attribute:str) -> int:
         result = 0
         try:

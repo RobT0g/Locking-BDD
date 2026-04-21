@@ -8,8 +8,10 @@ gene_blueprint = {
     'INTIMIDATION': 0,
     'PEACE': 0,
     'WAR': 0,
+    
     'RETALIATION': 0,
     'FEAR': 0,
+    
     'PURSUIT': 0,
     'SPEED': 0
 }
