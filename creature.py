@@ -9,9 +9,8 @@ class Creature:
     baseline_alele_val:int = 5
 
     max_random_aleles:int = 100
-    max_alele_loss = 20
-    max_alele_gain = 20
-    max_alele_change = 30
+    max_alele_gain = 40
+    max_alele_loss = 40
 
     def __init__(self):
         self.total_aleles = self.baseline_number_of_aleles
@@ -27,21 +26,30 @@ class Creature:
         new_creature = Creature()
         new_creature.genes = self.genes.copy()
 
-        # Gain or lose aleles
-        alele_gain = random.randint(-self.max_alele_loss, self.max_alele_gain)
-        if self.total_aleles + alele_gain < new_creature.baseline_number_of_aleles:
-            alele_gain = new_creature.baseline_number_of_aleles - self.total_aleles
+        # Gain and lose aleles
+        alele_gain = random.randint(0, self.max_alele_gain)
+        alele_loss = random.randint(0, self.max_alele_loss)
 
-        new_creature.total_aleles = self.total_aleles + alele_gain
-        for i in range(abs(alele_gain)):
+        if self.total_aleles < new_creature.baseline_number_of_aleles:
+            alele_loss = 0
+
+        new_creature.total_aleles = self.total_aleles + alele_gain - alele_loss
+        
+        # Increasing Aleles
+        for i in range(alele_gain):
             attr_changed = random.randint(0, len(gene_fields)-1)
             new_creature.genes[gene_fields[attr_changed]] += 1 if alele_gain > 0 else -1
+        
+        # Lowering Aleles
+        for i in range(alele_loss):
+            attr_changed = random.randint(0, len(gene_fields)-1)
 
-        # Change aleles
-        alele_change = random.randint(0, self.max_alele_change)
-        for i in range(alele_change):
-            new_creature.genes[gene_fields[random.randint(0, len(gene_fields)-1)]] += 1
-            new_creature.genes[gene_fields[random.randint(0, len(gene_fields)-1)]] -= 1
+            # Making sure alele can't be lower than 1
+            while new_creature.genes[gene_fields[attr_changed]] <= 0:
+                attr_changed = random.randint(0, len(gene_fields)-1) 
+
+            new_creature.genes[gene_fields[attr_changed]] += 1 if alele_gain > 0 else -1
+
 
         return new_creature
 

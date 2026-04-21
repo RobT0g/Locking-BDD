@@ -103,6 +103,10 @@
 
 
 
+
+
+
+
  --- Current Iteration is 2 ---
 
 
@@ -154,9 +158,7 @@
 
 
 
-
  --- Current Iteration is 3 ---
-
 
 
 
@@ -259,6 +261,7 @@
 
 
 
+
  --- Current Iteration is 5 ---
 
 
@@ -309,9 +312,9 @@
 
 
 
-
-
  --- Current Iteration is 6 ---
+
+
 
 
 
@@ -415,6 +418,7 @@
 
 
 
+
  --- Current Iteration is 8 ---
 
 
@@ -460,19 +464,7 @@
 
 
 
-
-
-
-
-
-
-
  --- Current Iteration is 9 ---
-
-
-
-
-
 
 
 
@@ -568,11 +560,7 @@
 
 
 
-
-
-
  --- Current Iteration is 11 ---
-
 
 
 
@@ -723,12 +711,7 @@
 
 
 
-
-
-
-
  --- Current Iteration is 14 ---
-
 
 
 
@@ -831,7 +814,12 @@
 
 
 
+
+
+
  --- Current Iteration is 16 ---
+
+
 
 
 
@@ -987,8 +975,8 @@
 
 
 
- --- Current Iteration is 19 ---
 
+ --- Current Iteration is 19 ---
 
 
 
@@ -1091,6 +1079,7 @@
 
 
 
+
  --- Current Iteration is 21 ---
 
 
@@ -1142,8 +1131,12 @@
 
 
 
-
  --- Current Iteration is 22 ---
+
+
+
+
+
 
 
 
@@ -1247,7 +1240,12 @@
 
 
 
+
+
+
  --- Current Iteration is 24 ---
+
+
 
 
 
@@ -1350,9 +1348,7 @@
 
 
 
-
  --- Current Iteration is 26 ---
-
 
 
 
@@ -1454,9 +1450,7 @@
 
 
 
-
  --- Current Iteration is 28 ---
-
 
 
 
@@ -1559,7 +1553,14 @@
 
 
 
+
+
+
+
+
  --- Current Iteration is 30 ---
+
+
 
 
 
@@ -1715,7 +1716,12 @@
 
 
 
+
+
+
  --- Current Iteration is 33 ---
+
+
 
 
 
@@ -1818,8 +1824,10 @@
 
 
 
-
  --- Current Iteration is 35 ---
+
+
+
 
 
 
@@ -1920,10 +1928,8 @@
 
 
 
-
-
-
  --- Current Iteration is 37 ---
+
 
 
 
@@ -2023,15 +2029,7 @@
 
 
 
-
-
-
-
  --- Current Iteration is 39 ---
-
-
-
-
 
 
 
@@ -2128,10 +2126,11 @@
 
 
 
-
-
-
  --- Current Iteration is 41 ---
+
+
+
+
 
 
 
@@ -2235,10 +2234,8 @@
 
 
 
+
  --- Current Iteration is 43 ---
-
-
-
 
 
 
@@ -2335,11 +2332,11 @@
 
 
 
-
-
-
-
  --- Current Iteration is 45 ---
+
+
+
+
 
 
 
@@ -2443,7 +2440,11 @@
 
 
 
+
+
+
  --- Current Iteration is 47 ---
+
 
 
 
@@ -2544,9 +2545,6 @@
 
 
 
-
-
-
  --- Current Iteration is 49 ---
 
 
@@ -2597,9 +2595,12 @@
 
 
 
-
-
  --- Current Iteration is 50 ---
+
+
+
+
+
 
 
 
@@ -2703,11 +2704,8 @@
 
 
 
+
  --- Current Iteration is 52 ---
-
-
-
-
 
 
 
@@ -2805,12 +2803,7 @@
 
 
 
-
-
  --- Current Iteration is 54 ---
-
-
-
 
 
 
@@ -2957,13 +2950,8 @@
 
 
 
-
-
-
-
-
-
  --- Current Iteration is 57 ---
+
 
 
 
@@ -3065,10 +3053,7 @@
 
 
 
-
-
  --- Current Iteration is 59 ---
-
 
 
 
@@ -3171,9 +3156,10 @@
 
 
 
+
+
+
  --- Current Iteration is 61 ---
-
-
 
 
 
@@ -3271,13 +3257,7 @@
 
 
 
-
-
-
-
  --- Current Iteration is 63 ---
-
-
 
 
 
@@ -3376,10 +3356,12 @@
 
 
 
-
-
-
  --- Current Iteration is 65 ---
+
+
+
+
+
 
 
 
@@ -3482,7 +3464,6 @@
 
 
 
-
  --- Current Iteration is 67 ---
 
 
@@ -3532,11 +3513,7 @@
 
 
 
-
-
-
  --- Current Iteration is 68 ---
-
 
 
 
@@ -3639,9 +3616,10 @@
 
 
 
+
+
+
  --- Current Iteration is 70 ---
-
-
 
 
 
@@ -3790,18 +3768,7 @@
 
 
 
-
-
-
-
-
  --- Current Iteration is 73 ---
-
-
-
-
-
-
 
 
 
@@ -3894,15 +3861,7 @@
 
 
 
-
-
-
-
-
  --- Current Iteration is 75 ---
-
-
-
 
 
 
@@ -4003,9 +3962,9 @@
 
 
 
+
+
  --- Current Iteration is 77 ---
-
-
 
 
 
@@ -4156,9 +4115,6 @@
 
 
 
-
-
-
  --- Current Iteration is 80 ---
 
 
@@ -4210,8 +4166,9 @@
 
 
 
-
  --- Current Iteration is 81 ---
+
+
 
 
 
@@ -4367,6 +4324,8 @@
 
 
 
+
+
  --- Current Iteration is 84 ---
 
 
@@ -4469,8 +4428,6 @@
 
 
 
-
-
  --- Current Iteration is 86 ---
 
 
@@ -4521,10 +4478,7 @@
 
 
 
-
-
  --- Current Iteration is 87 ---
-
 
 
 
@@ -4628,10 +4582,6 @@
 
 
  --- Current Iteration is 89 ---
-
-
-
-
 
 
 
@@ -4783,7 +4733,15 @@
 
 
 
+
+
+
+
+
  --- Current Iteration is 92 ---
+
+
+
 
 
 
@@ -4886,8 +4844,9 @@
 
 
 
-
  --- Current Iteration is 94 ---
+
+
 
 
 
@@ -4989,9 +4948,9 @@
 
 
 
-
-
  --- Current Iteration is 96 ---
+
+
 
 
 
@@ -5093,9 +5052,8 @@
 
 
 
-
-
  --- Current Iteration is 98 ---
+
 
 
 
@@ -5195,13 +5153,7 @@
 
 
 
-
-
-
-
  --- Current Iteration is 100 ---
-
-
 
 
 
@@ -5303,10 +5255,8 @@
 
 
 
+
  --- Current Iteration is 102 ---
-
-
-
 
 
 
@@ -5459,9 +5409,8 @@
 
 
 
+
  --- Current Iteration is 105 ---
-
-
 
 
 
@@ -5563,6 +5512,7 @@
 
 
 
+
  --- Current Iteration is 107 ---
 
 
@@ -5612,12 +5562,7 @@
 
 
 
-
-
-
  --- Current Iteration is 108 ---
-
-
 
 
 
@@ -5719,9 +5664,9 @@
 
 
 
+
+
  --- Current Iteration is 110 ---
-
-
 
 
 
@@ -5823,11 +5768,11 @@
 
 
 
+
+
+
+
  --- Current Iteration is 112 ---
-
-
-
-
 
 
 
@@ -5926,8 +5871,11 @@
 
 
 
-
  --- Current Iteration is 114 ---
+
+
+
+
 
 
 
@@ -6083,7 +6031,12 @@
 
 
 
+
+
+
  --- Current Iteration is 117 ---
+
+
 
 
 
@@ -6180,16 +6133,7 @@
 
 
 
-
-
-
-
-
-
-
  --- Current Iteration is 119 ---
-
-
 
 
 
@@ -6341,8 +6285,6 @@
 
 
 
-
-
  --- Current Iteration is 122 ---
 
 
@@ -6393,9 +6335,10 @@
 
 
 
-
-
  --- Current Iteration is 123 ---
+
+
+
 
 
 
@@ -6551,7 +6494,12 @@
 
 
 
+
+
+
+
  --- Current Iteration is 126 ---
+
 
 
 
@@ -6649,16 +6597,7 @@
 
 
 
-
-
-
-
-
-
  --- Current Iteration is 128 ---
-
-
-
 
 
 
@@ -6758,8 +6697,10 @@
 
 
 
-
  --- Current Iteration is 130 ---
+
+
+
 
 
 
@@ -6915,6 +6856,8 @@
 
 
 
+
+
  --- Current Iteration is 133 ---
 
 
@@ -6964,12 +6907,7 @@
 
 
 
-
-
-
  --- Current Iteration is 134 ---
-
-
 
 
 
@@ -7071,6 +7009,9 @@
 
 
 
+
+
+
  --- Current Iteration is 136 ---
 
 
@@ -7121,10 +7062,7 @@
 
 
 
-
-
  --- Current Iteration is 137 ---
-
 
 
 
@@ -7227,6 +7165,8 @@
 
 
 
+
+
  --- Current Iteration is 139 ---
 
 
@@ -7277,11 +7217,7 @@
 
 
 
-
-
  --- Current Iteration is 140 ---
-
-
 
 
 
@@ -7383,9 +7319,8 @@
 
 
 
+
  --- Current Iteration is 142 ---
-
-
 
 
 
@@ -7591,6 +7526,7 @@
 
 
 
+
  --- Current Iteration is 146 ---
 
 
@@ -7641,13 +7577,7 @@
 
 
 
-
-
  --- Current Iteration is 147 ---
-
-
-
-
 
 
 
@@ -7747,12 +7677,8 @@
 
 
 
+
  --- Current Iteration is 149 ---
-
-
-
-
-
 
 
 
@@ -7899,10 +7825,6 @@
 
 
 
-
-
-
-
  --- Current Iteration is 152 ---
 
 
@@ -7999,14 +7921,6 @@
 
 
 
-
-
-
-
-
-
-
-
  --- Current Iteration is 154 ---
 
 
@@ -8054,15 +7968,7 @@
 
 
 
-
-
-
-
-
  --- Current Iteration is 155 ---
-
-
-
 
 
 
@@ -8163,6 +8069,7 @@
 
 
 
+
  --- Current Iteration is 157 ---
 
 
@@ -8211,16 +8118,7 @@
 
 
 
-
-
-
-
  --- Current Iteration is 158 ---
-
-
-
-
-
 
 
 
@@ -8318,8 +8216,9 @@
 
 
 
-
  --- Current Iteration is 160 ---
+
+
 
 
 
@@ -8472,10 +8371,8 @@
 
 
 
-
-
-
  --- Current Iteration is 163 ---
+
 
 
 
@@ -8577,9 +8474,9 @@
 
 
 
-
-
  --- Current Iteration is 165 ---
+
+
 
 
 
@@ -8683,9 +8580,9 @@
 
 
 
+
+
  --- Current Iteration is 167 ---
-
-
 
 
 
@@ -8839,8 +8736,10 @@
 
 
 
- --- Current Iteration is 170 ---
 
+
+
+ --- Current Iteration is 170 ---
 
 
 
@@ -8943,6 +8842,8 @@
 
 
 
+
+
  --- Current Iteration is 172 ---
 
 
@@ -8993,9 +8894,11 @@
 
 
 
-
-
  --- Current Iteration is 173 ---
+
+
+
+
 
 
 
@@ -9150,8 +9053,8 @@
 
 
 
-
  --- Current Iteration is 176 ---
+
 
 
 
@@ -9253,10 +9156,7 @@
 
 
 
-
-
  --- Current Iteration is 178 ---
-
 
 
 
@@ -9359,6 +9259,10 @@
 
 
 
+
+
+
+
  --- Current Iteration is 180 ---
 
 
@@ -9408,11 +9312,7 @@
 
 
 
-
-
-
  --- Current Iteration is 181 ---
-
 
 
 
@@ -9515,6 +9415,9 @@
 
 
 
+
+
+
  --- Current Iteration is 183 ---
 
 
@@ -9563,12 +9466,7 @@
 
 
 
-
-
-
-
  --- Current Iteration is 184 ---
-
 
 
 
@@ -9671,8 +9569,9 @@
 
 
 
- --- Current Iteration is 186 ---
 
+
+ --- Current Iteration is 186 ---
 
 
 
@@ -9775,9 +9674,8 @@
 
 
 
+
  --- Current Iteration is 188 ---
-
-
 
 
 
@@ -9879,9 +9777,10 @@
 
 
 
+
+
+
  --- Current Iteration is 190 ---
-
-
 
 
 
@@ -10035,7 +9934,20 @@
 
 
 
+
+
+
+
+
+
+
+
+
  --- Current Iteration is 193 ---
+
+
+
+
 
 
 
@@ -10139,6 +10051,9 @@
 
 
 
+
+
+
  --- Current Iteration is 195 ---
 
 
@@ -10190,8 +10105,15 @@
 
 
 
-
  --- Current Iteration is 196 ---
+
+
+
+
+
+
+
+
 
 
 
@@ -10295,9 +10217,8 @@
 
 
 
+
  --- Current Iteration is 198 ---
-
-
 
 
 
@@ -10399,6 +10320,8 @@
 
 
 
+
+
  --- Current Iteration is 200 ---
 
 
@@ -10449,9 +10372,11 @@
 
 
 
-
-
  --- Current Iteration is 201 ---
+
+
+
+
 
 
 
@@ -10555,6 +10480,7 @@
 
 
 
+
  --- Current Iteration is 203 ---
 
 
@@ -10604,10 +10530,9 @@
 
 
 
-
-
-
  --- Current Iteration is 204 ---
+
+
 
 
 
@@ -10710,8 +10635,16 @@
 
 
 
-
  --- Current Iteration is 206 ---
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10815,7 +10748,14 @@
 
 
 
+
+
+
+
+
  --- Current Iteration is 208 ---
+
+
 
 
 
@@ -10915,11 +10855,9 @@
 
 
 
-
-
-
-
  --- Current Iteration is 210 ---
+
+
 
 
 
@@ -11022,7 +10960,6 @@
 
 
 
-
  --- Current Iteration is 212 ---
 
 
@@ -11075,7 +11012,16 @@
 
 
 
+
+
+
+
+
  --- Current Iteration is 213 ---
+
+
+
+
 
 
 
@@ -11231,6 +11177,9 @@
 
 
 
+
+
+
  --- Current Iteration is 216 ---
 
 
@@ -11335,7 +11284,18 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
  --- Current Iteration is 218 ---
+
 
 
 
@@ -11436,10 +11396,13 @@
 
 
 
-
-
-
  --- Current Iteration is 220 ---
+
+
+
+
+
+
 
 
 
@@ -11543,6 +11506,11 @@
 
 
 
+
+
+
+
+
  --- Current Iteration is 222 ---
 
 
@@ -11592,11 +11560,7 @@
 
 
 
-
-
-
  --- Current Iteration is 223 ---
-
 
 
 
@@ -11699,9 +11663,10 @@
 
 
 
+
+
+
  --- Current Iteration is 225 ---
-
-
 
 
 
@@ -11803,7 +11768,12 @@
 
 
 
+
+
+
+
  --- Current Iteration is 227 ---
+
 
 
 
@@ -11959,7 +11929,15 @@
 
 
 
+
+
+
+
+
+
  --- Current Iteration is 230 ---
+
+
 
 
 
@@ -12061,9 +12039,10 @@
 
 
 
-
-
  --- Current Iteration is 232 ---
+
+
+
 
 
 
@@ -12163,14 +12142,7 @@
 
 
 
-
-
-
-
  --- Current Iteration is 234 ---
-
-
-
 
 
 
@@ -12271,7 +12243,18 @@
 
 
 
+
+
+
+
+
+
+
  --- Current Iteration is 236 ---
+
+
+
+
 
 
 
@@ -12427,6 +12410,9 @@
 
 
 
+
+
+
  --- Current Iteration is 239 ---
 
 
@@ -12476,14 +12462,7 @@
 
 
 
-
-
-
  --- Current Iteration is 240 ---
-
-
-
-
 
 
 
@@ -12581,9 +12560,15 @@
 
 
 
-
-
  --- Current Iteration is 242 ---
+
+
+
+
+
+
+
+
 
 
 
@@ -12687,6 +12672,9 @@
 
 
 
+
+
+
  --- Current Iteration is 244 ---
 
 
@@ -12738,8 +12726,12 @@
 
 
 
-
  --- Current Iteration is 245 ---
+
+
+
+
+
 
 
 
@@ -12843,11 +12835,9 @@
 
 
 
+
+
  --- Current Iteration is 247 ---
-
-
-
-
 
 
 
@@ -12946,8 +12936,13 @@
 
 
 
-
  --- Current Iteration is 249 ---
+
+
+
+
+
+
 
 
 
@@ -13051,10 +13046,8 @@
 
 
 
+
  --- Current Iteration is 251 ---
-
-
-
 
 
 
@@ -13155,6 +13148,7 @@
 
 
 
+
  --- Current Iteration is 253 ---
 
 
@@ -13202,12 +13196,10 @@
 
 
 
-
-
-
-
-
  --- Current Iteration is 254 ---
+
+
+
 
 
 
@@ -13311,6 +13303,8 @@
 
 
 
+
+
  --- Current Iteration is 256 ---
 
 
@@ -13362,12 +13356,7 @@
 
 
 
-
  --- Current Iteration is 257 ---
-
-
-
-
 
 
 
@@ -13467,9 +13456,10 @@
 
 
 
+
+
+
  --- Current Iteration is 259 ---
-
-
 
 
 
@@ -13623,9 +13613,12 @@
 
 
 
+
+
+
+
+
  --- Current Iteration is 262 ---
-
-
 
 
 
@@ -13725,11 +13718,7 @@
 
 
 
-
-
  --- Current Iteration is 264 ---
-
-
 
 
 
@@ -13881,9 +13870,9 @@
 
 
 
-
-
  --- Current Iteration is 267 ---
+
+
 
 
 
@@ -13984,9 +13973,6 @@
 
 
 
-
-
-
  --- Current Iteration is 269 ---
 
 
@@ -14036,11 +14022,7 @@
 
 
 
-
-
-
  --- Current Iteration is 270 ---
-
 
 
 
@@ -14143,7 +14125,12 @@
 
 
 
+
+
+
+
  --- Current Iteration is 272 ---
+
 
 
 
@@ -14299,7 +14286,14 @@
 
 
 
+
+
+
+
+
  --- Current Iteration is 275 ---
+
+
 
 
 
@@ -14397,17 +14391,7 @@
 
 
 
-
-
-
-
-
-
  --- Current Iteration is 277 ---
-
-
-
-
 
 
 
@@ -14507,11 +14491,10 @@
 
 
 
+
+
+
  --- Current Iteration is 279 ---
-
-
-
-
 
 
 
@@ -14610,8 +14593,12 @@
 
 
 
-
  --- Current Iteration is 281 ---
+
+
+
+
+
 
 
 
@@ -14715,6 +14702,8 @@
 
 
 
+
+
  --- Current Iteration is 283 ---
 
 
@@ -14762,14 +14751,7 @@
 
 
 
-
-
-
-
-
  --- Current Iteration is 284 ---
-
-
 
 
 
@@ -14871,6 +14853,8 @@
 
 
 
+
+
  --- Current Iteration is 286 ---
 
 
@@ -14916,19 +14900,7 @@
 
 
 
-
-
-
-
-
-
-
  --- Current Iteration is 287 ---
-
-
-
-
-
 
 
 
@@ -15024,10 +14996,9 @@
 
 
 
-
-
-
  --- Current Iteration is 289 ---
+
+
 
 
 
@@ -15130,10 +15101,7 @@
 
 
 
-
  --- Current Iteration is 291 ---
-
-
 
 
 
@@ -15235,6 +15203,8 @@
 
 
 
+
+
  --- Current Iteration is 293 ---
 
 
@@ -15281,15 +15251,7 @@
 
 
 
-
-
-
-
-
-
  --- Current Iteration is 294 ---
-
-
 
 
 
@@ -15391,6 +15353,9 @@
 
 
 
+
+
+
  --- Current Iteration is 296 ---
 
 
@@ -15437,15 +15402,7 @@
 
 
 
-
-
-
-
-
-
  --- Current Iteration is 297 ---
-
-
 
 
 
@@ -15547,11 +15504,8 @@
 
 
 
+
  --- Current Iteration is 299 ---
-
-
-
-
 
 
 
@@ -15651,16 +15605,8 @@
 
 
 
+
  --- Current Iteration is 301 ---
-
-
-
-
-
-
-
-
-
 
 
 
@@ -15747,18 +15693,7 @@
 
 
 
-
-
-
-
-
-
-
-
  --- Current Iteration is 303 ---
-
-
-
 
 
 
@@ -15859,12 +15794,9 @@
 
 
 
+
+
  --- Current Iteration is 305 ---
-
-
-
-
-
 
 
 
@@ -16015,7 +15947,11 @@
 
 
 
+
+
+
  --- Current Iteration is 308 ---
+
 
 
 
@@ -16114,11 +16050,6 @@
 
 
 
-
-
-
-
-
  --- Current Iteration is 310 ---
 
 
@@ -16168,10 +16099,11 @@
 
 
 
-
-
-
  --- Current Iteration is 311 ---
+
+
+
+
 
 
 
@@ -16326,8 +16258,9 @@
 
 
 
-
  --- Current Iteration is 314 ---
+
+
 
 
 
@@ -16425,12 +16358,6 @@
 
 
 
-
-
-
-
-
-
  --- Current Iteration is 316 ---
 
 
@@ -16480,10 +16407,10 @@
 
 
 
-
-
-
  --- Current Iteration is 317 ---
+
+
+
 
 
 
@@ -16639,14 +16566,11 @@
 
 
 
+
+
+
+
  --- Current Iteration is 320 ---
-
-
-
-
-
-
-
 
 
 
@@ -16743,6 +16667,7 @@
 
 
 
+
  --- Current Iteration is 322 ---
 
 
@@ -16788,17 +16713,7 @@
 
 
 
-
-
-
-
-
-
-
  --- Current Iteration is 323 ---
-
-
-
 
 
 
@@ -16951,7 +16866,14 @@
 
 
 
+
+
+
+
+
  --- Current Iteration is 326 ---
+
+
 
 
 
@@ -17047,14 +16969,6 @@
 
 
 
-
-
-
-
-
-
-
-
  --- Current Iteration is 328 ---
 
 
@@ -17100,18 +17014,7 @@
 
 
 
-
-
-
-
-
-
-
  --- Current Iteration is 329 ---
-
-
-
-
 
 
 
@@ -17211,6 +17114,7 @@
 
 
 
+
  --- Current Iteration is 331 ---
 
 
@@ -17258,14 +17162,7 @@
 
 
 
-
-
-
-
-
  --- Current Iteration is 332 ---
-
-
 
 
 
@@ -17365,8 +17262,6 @@
 
 
 
-
-
  --- Current Iteration is 334 ---
 
 
@@ -17417,12 +17312,7 @@
 
 
 
-
-
  --- Current Iteration is 335 ---
-
-
-
 
 
 
@@ -17522,9 +17412,7 @@
 
 
 
-
  --- Current Iteration is 337 ---
-
 
 
 
@@ -17627,7 +17515,16 @@
 
 
 
+
+
+
+
+
+
  --- Current Iteration is 339 ---
+
+
+
 
 
 
@@ -17783,10 +17680,10 @@
 
 
 
+
+
+
  --- Current Iteration is 342 ---
-
-
-
 
 
 
@@ -17887,10 +17784,10 @@
 
 
 
+
+
+
  --- Current Iteration is 344 ---
-
-
-
 
 
 
@@ -17988,10 +17885,11 @@
 
 
 
-
-
-
  --- Current Iteration is 346 ---
+
+
+
+
 
 
 
@@ -18147,8 +18045,10 @@
 
 
 
- --- Current Iteration is 349 ---
 
+
+
+ --- Current Iteration is 349 ---
 
 
 
@@ -18251,6 +18151,9 @@
 
 
 
+
+
+
  --- Current Iteration is 351 ---
 
 
@@ -18299,11 +18202,8 @@
 
 
 
-
-
-
-
  --- Current Iteration is 352 ---
+
 
 
 
@@ -18405,9 +18305,8 @@
 
 
 
-
-
  --- Current Iteration is 354 ---
+
 
 
 
@@ -18608,20 +18507,7 @@
 
 
 
-
-
-
-
-
-
-
  --- Current Iteration is 358 ---
-
-
-
-
-
-
 
 
 
@@ -18715,15 +18601,7 @@
 
 
 
-
-
-
-
  --- Current Iteration is 360 ---
-
-
-
-
 
 
 
@@ -18823,6 +18701,8 @@
 
 
 
+
+
  --- Current Iteration is 362 ---
 
 
@@ -18870,15 +18750,7 @@
 
 
 
-
-
-
-
-
  --- Current Iteration is 363 ---
-
-
-
 
 
 
@@ -18978,9 +18850,7 @@
 
 
 
-
  --- Current Iteration is 365 ---
-
 
 
 
@@ -19135,6 +19005,8 @@
 
 
 
+
+
  --- Current Iteration is 368 ---
 
 
@@ -19183,12 +19055,7 @@
 
 
 
-
-
-
-
  --- Current Iteration is 369 ---
-
 
 
 
@@ -19339,16 +19206,7 @@
 
 
 
-
-
-
-
  --- Current Iteration is 372 ---
-
-
-
-
-
 
 
 
@@ -19445,9 +19303,11 @@
 
 
 
-
-
  --- Current Iteration is 374 ---
+
+
+
+
 
 
 
@@ -19603,9 +19463,9 @@
 
 
 
+
+
  --- Current Iteration is 377 ---
-
-
 
 
 
@@ -19754,16 +19614,7 @@
 
 
 
-
-
-
-
-
  --- Current Iteration is 380 ---
-
-
-
-
 
 
 
@@ -19860,10 +19711,10 @@
 
 
 
-
-
-
  --- Current Iteration is 382 ---
+
+
+
 
 
 
@@ -19965,13 +19816,7 @@
 
 
 
-
-
  --- Current Iteration is 384 ---
-
-
-
-
 
 
 
@@ -20068,11 +19913,7 @@
 
 
 
-
-
-
  --- Current Iteration is 386 ---
-
 
 
 
@@ -20175,6 +20016,10 @@
 
 
 
+
+
+
+
  --- Current Iteration is 388 ---
 
 
@@ -20226,8 +20071,12 @@
 
 
 
-
  --- Current Iteration is 389 ---
+
+
+
+
+
 
 
 
@@ -20383,6 +20232,11 @@
 
 
 
+
+
+
+
+
  --- Current Iteration is 392 ---
 
 
@@ -20433,9 +20287,12 @@
 
 
 
-
-
  --- Current Iteration is 393 ---
+
+
+
+
+
 
 
 
@@ -20539,8 +20396,12 @@
 
 
 
- --- Current Iteration is 395 ---
 
+
+
+
+
+ --- Current Iteration is 395 ---
 
 
 
@@ -20643,10 +20504,11 @@
 
 
 
+
+
+
+
  --- Current Iteration is 397 ---
-
-
-
 
 
 
@@ -20747,8 +20609,11 @@
 
 
 
- --- Current Iteration is 399 ---
 
+
+
+
+ --- Current Iteration is 399 ---
 
 
 

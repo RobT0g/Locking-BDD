@@ -36,20 +36,39 @@ class World:
     def calculate(self, creatures:list[Creature], attribute:str) -> list[int]:
         return self.action_manager.get_paired_attribute(creatures, attribute)
 
-    def fight(self, creature_ids:list[int]) -> tuple[bool, int, int]:
+    def fight(self, creature_ids:list[int]) -> tuple[bool, bool, int, int]:
         fighters = [self.creatures[i] for i in creature_ids]
+        
+        damage = self.action_manager.get_paired_attribute(fighters, 'damage')
         hits_to_kill = self.action_manager.get_both_hits_to_kill(fighters)
+        
+        def manage_truce(win_id:int) -> bool:
+            loser_id = (win_id+1)%2
+
+            hp = fighters[win_id].genes['HEALTH']
+            dmg_received = (hits_to_kill[win_id] + 0 if win_id == 1 else -1)*damage[loser_id]
+            life_left = int((100*dmg_received)/hp)-50
+            
+            r = random.randint(0, 50) <  life_left
+            if r:
+                self.strategies[-1]['both_died_basic_fight'] += 1
+            else:
+                self.strategies[-1]['won_basic_fight'] += 1
+            return r
 
         if hits_to_kill[0] <= hits_to_kill[1]:
-            # Fighter 1 won
-            return (True, creature_ids[0], creature_ids[1])
+            # Fighter 1 does more damage                        
+            return (True, manage_truce(0), creature_ids[0], creature_ids[1])
+       
+        # Fighter 2 does more damage
+        return (True, manage_truce(1), creature_ids[1], creature_ids[0])
 
-        else:
-            # Fighter 2 won
-            return (True, creature_ids[1], creature_ids[0])
-
-    def run_encounter(self, creature_ids:list[int]) -> tuple[bool, int, int]:
+    def run_encounter(self, creature_ids:list[int]) -> tuple[bool, bool, int, int]:
         fighters = [self.creatures[i] for i in creature_ids]
+
+        if fighters[1].genes['INITIATIVE'] > fighters[0].genes['INITIATIVE']:
+            creature_ids = [creature_ids[1], creature_ids[0]]
+            fighters = [fighters[1], fighters[0]]
         
         # Will they fight?
         engage_status = [i > 0 for i in self.calculate(fighters, 'engage')]
@@ -57,10 +76,17 @@ class World:
 
         if all(engage_status):
             # Both want to fight
-            self.strategies[-1]['basic_fight'] += 1
             return self.fight(creature_ids)
+            
+            if r[1]:
+                self.strategies[-1]['basic_fight'] += 1
 
-        elif any(engage_status):
+            else:
+                pass
+
+            return r
+
+        if any(engage_status):
             # Only one of them want to fight
             if engage_status[1]:
                 creature_ids = [creature_ids[1], creature_ids[0]]
@@ -71,24 +97,25 @@ class World:
 
             if will_pursuit <= 0 or can_escape > 1:
                 # No fight
-                self.strategies[-1]['escape'] += 1
-                return (False, fighters[0], fighters[1])
+                self.strategies[-1]['escaped'] += 1
+                return (False, False, fighters[0], fighters[1])
 
             # Attacker catch up
-            self.strategies[-1]['no_escape'] += 1
+            #self.strategies[-1]['no_escape'] += 1
             return self.fight(creature_ids)
 
         else:
             # Neither wants to fight
             self.strategies[-1]['no_fight'] += 1
-            return (False, fighters[0], fighters[1])
+            return (False, False, fighters[0], fighters[1])
 
     def iterate(self, iteration_number:int, report:bool=False):
+        print(f'\n --- Current Iteration is {iteration_number}. Number of Creatures {len(self.creatures)} ---\n')
         next_gen = []
         self.world_report += f'\n --- Current Iteration is {iteration_number} ---\n'
-        self.strategies.append({'basic_fight':0, 'escape':0, 'no_escape':0, 'no_fight':0})
+        self.strategies.append({'won_basic_fight':0, 'both_died_basic_fight': 0, 'escaped':0, 'won_escaping_fight':0, 'both_died_escaping_fight':0, 'no_fight':0})
 
-        for i in range(0, self.number_of_creatures, 2):
+        for i in range(0, len(self.creatures)-1, 2):
             result = self.run_encounter([i, i+1])
             current_report = ''#self.report_fight(result[0], [self.creatures[result[1]], self.creatures[result[2]]])
             self.world_report += current_report + '\n'
@@ -96,22 +123,29 @@ class World:
             if report:
                 print(current_report)
 
+            if result[0] and result[1]:
+                continue
+
             if result[0]:
-                winner = self.creatures[result[1]]
+                winner = self.creatures[result[2]]
                 
-                for i in range(2):
+                for i in range(2 if len(self.creatures) > 100 else 3):
                     new_creature = winner.create_imperfect_copy()
                     next_gen.append(new_creature)
                     self.list_of_creatures.append(new_creature)
-                    self.lineage.add_new_item(new_creature, winner)
+                    #self.lineage.add_new_item(new_creature, winner)
             
             else:
-                new_creatures = [self.creatures[i].create_imperfect_copy(), self.creatures[i+1].create_imperfect_copy()]
+                if len(self.creatures) < 50:
+                    new_creatures = [self.creatures[i].create_imperfect_copy(), self.creatures[i].create_imperfect_copy(), self.creatures[i+1].create_imperfect_copy(), self.creatures[i+1].create_imperfect_copy()]
+
+                else:
+                    new_creatures = [self.creatures[i].create_imperfect_copy(), self.creatures[i+1].create_imperfect_copy()]
 
                 for ind, c in enumerate(new_creatures):
                     next_gen.append(c)
                     self.list_of_creatures.append(c)
-                    self.lineage.add_new_item(c, self.creatures[i+ind])
+                    #self.lineage.add_new_item(c, self.creatures[i+ind])
 
         self.generations.append(next_gen)
         self.creatures = next_gen
@@ -153,7 +187,7 @@ class World:
                 for c in gen:
                     avg_field_value += c.genes[attr]
 
-                avg_field_value = (avg_field_value/self.number_of_creatures)
+                avg_field_value = (avg_field_value/len(gen))
                 attribute_trends[attr].append(avg_field_value)
         
         with open("trends.json", "w") as final_file:
@@ -172,7 +206,7 @@ class World:
         plt.savefig(f'results/{self.name}_multi_line_plot.png')
         
         plt.figure(2)
-        analyze_st = {'basic_fight':[], 'escape':[], 'no_escape':[], 'no_fight':[]}
+        analyze_st = {'won_basic_fight':[], 'both_died_basic_fight': [], 'escaped':[], 'won_escaping_fight':[], 'both_died_escaping_fight':[], 'no_fight':[]}
         for attr in analyze_st:
             for gen in self.strategies:
                 analyze_st[attr].append(gen[attr])

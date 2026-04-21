@@ -1,5 +1,7 @@
 from dataclasses import dataclass, asdict
+import traceback
 import math
+import random
 from creature import *
 
 @dataclass
@@ -22,9 +24,18 @@ class Actions:
             attribute_cal = getattr(self, attribute)
             
             for cel in attribute_cal:
-                result += creatures[cel[0]].genes[cel[1]]*cel[2]
+                v = creatures[cel[0]].genes[cel[1]]
 
-        except: print('INCORRECT ATTRIBUTE NAME')
+                if v >= 0:
+                    result += random.randint(0, v)*cel[2]
+
+                else:
+                    result += random.randint(v, 0)*cel[2]
+
+
+        except Exception as e: 
+            traceback.print_exc()
+            print(f'INCORRECT ATTRIBUTE NAME, {attribute}')
 
         if min_val:=getattr(self, attribute + '_min') is not None:
             if min_val > result: result = min_val
