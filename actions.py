@@ -27,7 +27,7 @@ class Actions:
                 v = creatures[cel[0]].genes[cel[1]]
 
                 if v >= 0:
-                    #result += random.randint(math.ceil(v*3/4), v)*cel[2]
+                    # result += random.randint(math.ceil(v*3/4), v)*cel[2]
                     result += v*cel[2]
 
                 else:
