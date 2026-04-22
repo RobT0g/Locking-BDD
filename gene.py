@@ -1,4 +1,5 @@
 from dataclasses import dataclass, asdict
+import numpy as np
 import random
 
 gene_blueprint = {
@@ -16,6 +17,14 @@ gene_blueprint = {
 }
 
 gene_fields = list(gene_blueprint.keys())
+
+def distribute_fairly(total, num_fields):
+    # Generates num_fields random numbers that sum to 1.0
+    weights = np.random.dirichlet(np.ones(num_fields), size=1)[0]
+    
+    # Multiply weights by the total
+    fields = weights * total
+    return fields
 
 def distribute_integer(total, n) -> list:
     cuts = sorted(random.sample(range(total + 1), n - 1))

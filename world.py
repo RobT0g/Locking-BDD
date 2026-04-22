@@ -15,7 +15,7 @@ from actions import *
 class World:
     def __init__(self, name:str):
         self.name = name
-        self.iterations:            int = 500
+        self.iterations:            int = 1000
         self.number_of_creatures:   int = 200
 
         self.creatures:             list[Creature] = [Creature.generate_random_creature() for i in range(self.number_of_creatures)]
@@ -147,7 +147,7 @@ class World:
                     self.list_of_creatures.append(c)
                     #self.lineage.add_new_item(c, self.creatures[i+ind])
 
-        self.generations.append(next_gen)
+        self.generations.append(next_gen.copy())
         self.creatures = next_gen
         random.shuffle(self.creatures)
 
@@ -215,7 +215,10 @@ class World:
         plt.figure(2)
         analyze_st = {'won_basic_fight':[], 'both_died_basic_fight': [], 'escaped':[], 'won_escaping_fight':[], 'both_died_escaping_fight':[], 'no_fight':[]}
         for attr in analyze_st:
-            for gen in self.strategies:
+            for ind in range(len(self.strategies)):
+                if ind%10 != 0:
+                    continue
+                gen = self.strategies[ind]
                 analyze_st[attr].append(gen[attr])
                 
             plt.plot(analyze_st[attr], label=attr, color=colors(list(analyze_st.keys()).index(attr)), linewidth=2)
